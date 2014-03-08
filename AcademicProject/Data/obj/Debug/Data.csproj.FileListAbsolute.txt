@@ -1,0 +1,7 @@
+C:\Users\edrei.bastar\Documents\Visual Studio 2012\Projects\AcademicProject\Data\bin\Debug\Data.dll
+C:\Users\edrei.bastar\Documents\Visual Studio 2012\Projects\AcademicProject\Data\bin\Debug\Data.pdb
+C:\Users\edrei.bastar\Documents\Visual Studio 2012\Projects\AcademicProject\Data\bin\Debug\AcademicProject.dll
+C:\Users\edrei.bastar\Documents\Visual Studio 2012\Projects\AcademicProject\Data\bin\Debug\AcademicProject.pdb
+C:\Users\edrei.bastar\Documents\Visual Studio 2012\Projects\AcademicProject\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+C:\Users\edrei.bastar\Documents\Visual Studio 2012\Projects\AcademicProject\Data\obj\Debug\Data.dll
+C:\Users\edrei.bastar\Documents\Visual Studio 2012\Projects\AcademicProject\Data\obj\Debug\Data.pdb

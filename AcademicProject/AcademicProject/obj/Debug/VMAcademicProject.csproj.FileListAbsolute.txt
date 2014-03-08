@@ -1,0 +1,5 @@
+C:\Users\edrei.bastar\Documents\Visual Studio 2012\Projects\AcademicProject\AcademicProject\bin\Debug\AcademicProject.dll
+C:\Users\edrei.bastar\Documents\Visual Studio 2012\Projects\AcademicProject\AcademicProject\bin\Debug\AcademicProject.pdb
+C:\Users\edrei.bastar\Documents\Visual Studio 2012\Projects\AcademicProject\AcademicProject\obj\Debug\VMAcademicProject.csprojResolveAssemblyReference.cache
+C:\Users\edrei.bastar\Documents\Visual Studio 2012\Projects\AcademicProject\AcademicProject\obj\Debug\AcademicProject.dll
+C:\Users\edrei.bastar\Documents\Visual Studio 2012\Projects\AcademicProject\AcademicProject\obj\Debug\AcademicProject.pdb
