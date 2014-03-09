@@ -39,7 +39,6 @@ namespace Data
                                  select new GroupAnswers
                                  {
                                      id = Convert.ToInt64(row["id"]),
-                                     subscriberId = Convert.ToInt64(row["subscriberid"]),
                                      subscriberName = Convert.ToString(row["subscribername"]),
                                      topic = Convert.ToString(row["topic"]),
                                      creationDate = Convert.ToDateTime(row["creationDate"])
@@ -68,7 +67,7 @@ namespace Data
                            select new GroupAnswers
                            {
                                id = Convert.ToInt64(row["id"]),
-                               subscriberId = Convert.ToInt64(row["subscriberid"]),
+                               
                                subscriberName = Convert.ToString(row["subscribername"]),
                                topic = Convert.ToString(row["topic"]),
                                creationDate = Convert.ToDateTime(row["creationDate"])
@@ -97,7 +96,7 @@ namespace Data
                            select new GroupAnswers
                            {
                                id = Convert.ToInt64(row["id"]),
-                               subscriberId = Convert.ToInt64(row["subscriberid"]),
+                               
                                subscriberName = Convert.ToString(row["subscribername"]),
                                topic = Convert.ToString(row["topic"]),
                                creationDate = Convert.ToDateTime(row["creationDate"])
@@ -125,7 +124,6 @@ namespace Data
                            select new GroupAnswers
                            {
                                id = Convert.ToInt64(row["id"]),
-                               subscriberId = Convert.ToInt64(row["subscriberid"]),
                                subscriberName = Convert.ToString(row["subscribername"]),
                                topic = Convert.ToString(row["topic"]),
                                creationDate = Convert.ToDateTime(row["creationDate"])
@@ -135,7 +133,7 @@ namespace Data
 
         }
 
-        public async Task<long> SaveGroup(GroupAnswers group)
+        public async Task<long> SaveGroup(GroupAnswers group,long subscriberid)
         {
             using (SqlConnection con = new SqlConnection(sqlConnection))
             {
@@ -146,7 +144,7 @@ namespace Data
                     cmd.Connection = con;
                     cmd.CommandText = "saveGroup";
                     cmd.Parameters.AddWithValue("id", group.id).Direction=ParameterDirection.InputOutput;
-                    cmd.Parameters.AddWithValue("subscriberid", group.subscriberId);
+                    cmd.Parameters.AddWithValue("subscriberid", subscriberid);
                     cmd.Parameters.AddWithValue("topic", group.topic);
                     await cmd.ExecuteNonQueryAsync();
                     return Convert.ToInt64((cmd.Parameters["id"].Value == DBNull.Value) ? 0 : cmd.Parameters["id"].Value);
