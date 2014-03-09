@@ -38,10 +38,11 @@ r2 varchar(300),
 r3 varchar(300),
 r4 varchar(300),
 correctasnwer varchar(300) not null,
+TypeAnswer varchar(50),
+points decimal
 foreign key (groupId) references groupanswer
 )
 
 go
-
 
 

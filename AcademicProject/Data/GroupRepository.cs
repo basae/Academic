@@ -5,20 +5,173 @@ using System.Text;
 using System.Threading.Tasks;
 using AcademicProject;
 using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
+
 
 namespace Data
 {
-    public class GroupRepository
+    public class GroupRepository : BaseRepository
     {
-         private string sqlConnection;
-         public GroupRepository()
-         {
-            sqlConnection = ConfigurationManager.ConnectionStrings["AcademicConnection"].ConnectionString;
-         }
-         public IEnumerable<GroupAnswers> getGroupAnswers()
-         {
+        public GroupRepository()
+        {
 
-         }
+        }
 
+
+        public async Task<GroupAnswers> getGroupAnswerByID(long subscriberid, long groupid)
+        {
+            using (SqlConnection con = new SqlConnection(sqlConnection))
+            {
+                await con.OpenAsync();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = con;
+                    cmd.CommandText = "getGroupsById";
+                    cmd.Parameters.AddWithValue("id", groupid);
+                    cmd.Parameters.AddWithValue("subscriberid", subscriberid);
+                    cmd.ExecuteNonQuery();
+                    SqlDataAdapter bindData = new SqlDataAdapter(cmd);
+                    DataTable getData = new DataTable();
+                    bindData.Fill(getData);
+                    var result = from row in getData.Rows.Cast<DataRow>() as IEnumerable<DataRow>
+                                 select new GroupAnswers
+                                 {
+                                     id = Convert.ToInt64(row["id"]),
+                                     subscriberId = Convert.ToInt64(row["subscriberid"]),
+                                     subscriberName = Convert.ToString(row["subscribername"]),
+                                     topic = Convert.ToString(row["topic"]),
+                                     creationDate = Convert.ToDateTime(row["creationDate"])
+                                 };
+                    return result.FirstOrDefault();
+                }
+            }
+        }
+
+        public async Task<IEnumerable<GroupAnswers>> getGroups(long subscriberId)
+        {
+            using (SqlConnection con = new SqlConnection(sqlConnection))
+            {
+                await con.OpenAsync();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = con;
+                    cmd.CommandText = "getGroupsBySubscriber";
+                    cmd.Parameters.AddWithValue("subscriberid ", subscriberId);
+                    await cmd.ExecuteNonQueryAsync();
+                    SqlDataAdapter bindData = new SqlDataAdapter(cmd);
+                    DataTable getData = new DataTable();
+                    bindData.Fill(getData);
+                    return from row in getData.Rows.Cast<DataRow>() as IEnumerable<DataRow>
+                           select new GroupAnswers
+                           {
+                               id = Convert.ToInt64(row["id"]),
+                               subscriberId = Convert.ToInt64(row["subscriberid"]),
+                               subscriberName = Convert.ToString(row["subscribername"]),
+                               topic = Convert.ToString(row["topic"]),
+                               creationDate = Convert.ToDateTime(row["creationDate"])
+                           };
+                }
+            }
+
+        }
+
+        public async Task<IEnumerable<GroupAnswers>> getGroupsByTopic(string topic)
+        {
+            using (SqlConnection con = new SqlConnection(sqlConnection))
+            {
+                await con.OpenAsync();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = con;
+                    cmd.CommandText = "getGroupsByTopic";
+                    cmd.Parameters.AddWithValue("topic ", topic);
+                    await cmd.ExecuteNonQueryAsync();
+                    SqlDataAdapter bindData = new SqlDataAdapter(cmd);
+                    DataTable getData = new DataTable();
+                    bindData.Fill(getData);
+                    return from row in getData.Rows.Cast<DataRow>() as IEnumerable<DataRow>
+                           select new GroupAnswers
+                           {
+                               id = Convert.ToInt64(row["id"]),
+                               subscriberId = Convert.ToInt64(row["subscriberid"]),
+                               subscriberName = Convert.ToString(row["subscribername"]),
+                               topic = Convert.ToString(row["topic"]),
+                               creationDate = Convert.ToDateTime(row["creationDate"])
+                           };
+                }
+            }
+
+        }
+
+        public async Task<IEnumerable<GroupAnswers>> getAllGroups()
+        {
+            using (SqlConnection con = new SqlConnection(sqlConnection))
+            {
+                await con.OpenAsync();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = con;
+                    cmd.CommandText = "getGroups";
+                    await cmd.ExecuteNonQueryAsync();
+                    SqlDataAdapter bindData = new SqlDataAdapter(cmd);
+                    DataTable getData = new DataTable();
+                    bindData.Fill(getData);
+                    return from row in getData.Rows.Cast<DataRow>() as IEnumerable<DataRow>
+                           select new GroupAnswers
+                           {
+                               id = Convert.ToInt64(row["id"]),
+                               subscriberId = Convert.ToInt64(row["subscriberid"]),
+                               subscriberName = Convert.ToString(row["subscribername"]),
+                               topic = Convert.ToString(row["topic"]),
+                               creationDate = Convert.ToDateTime(row["creationDate"])
+                           };
+                }
+            }
+
+        }
+
+        public async Task<long> SaveGroup(GroupAnswers group)
+        {
+            using (SqlConnection con = new SqlConnection(sqlConnection))
+            {
+                await con.OpenAsync();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = con;
+                    cmd.CommandText = "saveGroup";
+                    cmd.Parameters.AddWithValue("id", group.id).Direction=ParameterDirection.InputOutput;
+                    cmd.Parameters.AddWithValue("subscriberid", group.subscriberId);
+                    cmd.Parameters.AddWithValue("topic", group.topic);
+                    await cmd.ExecuteNonQueryAsync();
+                    return Convert.ToInt64((cmd.Parameters["id"].Value == DBNull.Value) ? 0 : cmd.Parameters["id"].Value);
+                }
+            }
+
+        }
+
+        public async Task<bool> DeleteGroup(long subscriberid, long groupid)
+        {
+            using (SqlConnection con = new SqlConnection(sqlConnection))
+            {
+                await con.OpenAsync();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = con;
+                    cmd.CommandText = "DeleteGroupById";
+                    cmd.Parameters.AddWithValue("id", groupid);
+                    cmd.Parameters.AddWithValue("subscriberid", subscriberid);
+                    await cmd.ExecuteNonQueryAsync();
+                    return (cmd.ExecuteNonQuery() == 0) ? true : false;
+                }
+
+            }
+        }
     }
 }

@@ -11,120 +11,120 @@ using System.Data;
 
 namespace Data
 {
-    public class SubscriberRepository
+    public class SubscriberRepository:BaseRepository
     {
-        private string sqlConnection;
+        
         public SubscriberRepository(){
-            sqlConnection = ConfigurationManager.ConnectionStrings["AcademicConnection"].ConnectionString;
+            
         }
         
-    public async Task<IEnumerable<Subscriber>> getSubscribers()
+        public async Task<IEnumerable<Subscriber>> getSubscribers()
+            {
+                using (SqlConnection con = new SqlConnection(sqlConnection))
+                {
+                    await con.OpenAsync();
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Connection = con;
+                        cmd.CommandText = "getUsers";                    
+                        await cmd.ExecuteNonQueryAsync();
+                        SqlDataAdapter bindData = new SqlDataAdapter(cmd);
+                        DataTable getData = new DataTable();
+                        bindData.Fill(getData);
+                        return from row in getData.Rows.Cast<DataRow>() as IEnumerable<DataRow>
+                               select new Subscriber
+                               {
+                                   id=Convert.ToInt64(row["id"]),
+                                   username=Convert.ToString(row["username"]),
+                                   password=Convert.ToString(row["pass"]),
+                                   firstname=Convert.ToString(row["firstname"]),
+                                   lastname=Convert.ToString(row["lastname"]),
+                                   email=Convert.ToString(row["email"]),
+                                   school=Convert.ToString(row["school"]),
+                                   regDate=DateTime.Parse(row["regDate"].ToString())
+                               };
+                    }
+
+                }
+            }
+
+        public Subscriber getSubscriberById(long id)
         {
             using (SqlConnection con = new SqlConnection(sqlConnection))
             {
-                await con.OpenAsync();
+                con.Open();
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Connection = con;
-                    cmd.CommandText = "getUsers";                    
-                    await cmd.ExecuteNonQueryAsync();
+                    cmd.CommandText = "getusersbyid";
+                    cmd.Parameters.AddWithValue("id", id);
+                    cmd.ExecuteNonQuery();
                     SqlDataAdapter bindData = new SqlDataAdapter(cmd);
                     DataTable getData = new DataTable();
                     bindData.Fill(getData);
-                    return from row in getData.Rows.Cast<DataRow>() as IEnumerable<DataRow>
+
+                    var result= from row in getData.Rows.Cast<DataRow>() as IEnumerable<DataRow>
                            select new Subscriber
                            {
-                               id=Convert.ToInt64(row["id"]),
-                               username=Convert.ToString(row["username"]),
-                               password=Convert.ToString(row["pass"]),
-                               firstname=Convert.ToString(row["firstname"]),
-                               lastname=Convert.ToString(row["lastname"]),
-                               email=Convert.ToString(row["email"]),
-                               school=Convert.ToString(row["school"]),
-                               regDate=DateTime.Parse(row["regDate"].ToString())
+                               id = Convert.ToInt64(row["id"]),
+                               username = Convert.ToString(row["username"]),
+                               password = Convert.ToString(row["pass"]),
+                               firstname = Convert.ToString(row["firstname"]),
+                               lastname = Convert.ToString(row["lastname"]),
+                               email = Convert.ToString(row["email"]),
+                               school = Convert.ToString(row["school"]),
+                               regDate = DateTime.Parse(row["regDate"].ToString())
                            };
+                    return result.FirstOrDefault();
+                }
+
+            }
+
+        }
+
+        public long SaveSubscriber(Subscriber subscriber)
+        {
+            using (SqlConnection con = new SqlConnection(sqlConnection))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = con;
+                    cmd.CommandText = "saveuser";
+                    cmd.Parameters.AddWithValue("id", subscriber.id).Direction=ParameterDirection.InputOutput;
+                    cmd.Parameters.AddWithValue("username", subscriber.username);
+                    cmd.Parameters.AddWithValue("pass", subscriber.password);
+                    cmd.Parameters.AddWithValue("firstname", subscriber.firstname);
+                    cmd.Parameters.AddWithValue("lastname", subscriber.lastname);
+                    cmd.Parameters.AddWithValue("email", subscriber.email);
+                    cmd.Parameters.AddWithValue("school", subscriber.school);
+                    cmd.ExecuteNonQuery();
+                    return Convert.ToInt64((cmd.Parameters["id"].Value == DBNull.Value) ? 0 : cmd.Parameters["id"].Value);
                 }
 
             }
         }
 
-    public Subscriber getSubscriberById(long id)
-    {
-        using (SqlConnection con = new SqlConnection(sqlConnection))
+        public bool DeleteSubscriber(long id)
         {
-            con.Open();
-            using (SqlCommand cmd = new SqlCommand())
+            using (SqlConnection con = new SqlConnection(sqlConnection))
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = con;
-                cmd.CommandText = "getusersbyid";
-                cmd.Parameters.AddWithValue("id", id);
-                cmd.ExecuteNonQuery();
-                SqlDataAdapter bindData = new SqlDataAdapter(cmd);
-                DataTable getData = new DataTable();
-                bindData.Fill(getData);
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = con;
+                    cmd.CommandText = "deleteuser";
+                    cmd.Parameters.AddWithValue("id", id);
+                    cmd.ExecuteNonQuery();
+                    return (cmd.ExecuteNonQuery() == 0) ? true : false;
+                }
 
-                var result= from row in getData.Rows.Cast<DataRow>() as IEnumerable<DataRow>
-                       select new Subscriber
-                       {
-                           id = Convert.ToInt64(row["id"]),
-                           username = Convert.ToString(row["username"]),
-                           password = Convert.ToString(row["pass"]),
-                           firstname = Convert.ToString(row["firstname"]),
-                           lastname = Convert.ToString(row["lastname"]),
-                           email = Convert.ToString(row["email"]),
-                           school = Convert.ToString(row["school"]),
-                           regDate = DateTime.Parse(row["regDate"].ToString())
-                       };
-                return result.FirstOrDefault();
             }
-
         }
-
-    }
-
-    public long SaveSubscriber(Subscriber subscriber)
-    {
-        using (SqlConnection con = new SqlConnection(sqlConnection))
-        {
-            con.Open();
-            using (SqlCommand cmd = new SqlCommand())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = con;
-                cmd.CommandText = "saveuser";
-                cmd.Parameters.AddWithValue("id", subscriber.id).Direction=ParameterDirection.InputOutput;
-                cmd.Parameters.AddWithValue("username", subscriber.username);
-                cmd.Parameters.AddWithValue("pass", subscriber.password);
-                cmd.Parameters.AddWithValue("firstname", subscriber.firstname);
-                cmd.Parameters.AddWithValue("lastname", subscriber.lastname);
-                cmd.Parameters.AddWithValue("email", subscriber.email);
-                cmd.Parameters.AddWithValue("school", subscriber.school);
-                cmd.ExecuteNonQuery();
-                return Convert.ToInt64((cmd.Parameters["id"].Value == DBNull.Value) ? 0 : cmd.Parameters["id"].Value);
-            }
-
-        }
-    }
-
-    public bool DeleteSubscriber(long id)
-    {
-        using (SqlConnection con = new SqlConnection(sqlConnection))
-        {
-            con.Open();
-            using (SqlCommand cmd = new SqlCommand())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = con;
-                cmd.CommandText = "deleteuser";
-                cmd.Parameters.AddWithValue("id", id);
-                cmd.ExecuteNonQuery();
-                return (cmd.ExecuteNonQuery() == 0) ? true : false;
-            }
-
-        }
-    }
 
     
  }

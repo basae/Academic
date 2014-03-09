@@ -11,9 +11,11 @@ GO
 
 create procedure getGroupsById
 (
-@id int
+@id int,
+@subscriberid int
 )
 as
 begin 
-select *from groupanswer where id=@id
+select groupanswer.id,subscriber.id as subscriberid,(subscriber.firstname+' '+subscriber.lastname) as subscribername,groupanswer.topic,groupanswer.creationDate
+from groupanswer inner join subscriber on subscriber.id=groupanswer.subscriberId where groupanswer.subscriberId=@subscriberid and groupanswer.id=@id
 end

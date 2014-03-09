@@ -5,3 +5,10 @@ C:\Users\edrei.bastar\Documents\Visual Studio 2012\Projects\AcademicProject\Data
 C:\Users\edrei.bastar\Documents\Visual Studio 2012\Projects\AcademicProject\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
 C:\Users\edrei.bastar\Documents\Visual Studio 2012\Projects\AcademicProject\Data\obj\Debug\Data.dll
 C:\Users\edrei.bastar\Documents\Visual Studio 2012\Projects\AcademicProject\Data\obj\Debug\Data.pdb
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\Data\obj\Debug\Data.dll
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\Data\bin\Debug\Data.dll
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\Data\bin\Debug\Data.pdb
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\Data\bin\Debug\AcademicProject.dll
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\Data\bin\Debug\AcademicProject.pdb
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\Data\obj\Debug\Data.pdb

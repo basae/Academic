@@ -11,9 +11,10 @@ GO
 
 create procedure DeleteGroupById
 (
-@id int
+@id int,
+@subscriberid int
 )
 as
 begin 
-delete from groupanswer where id=@id
+delete from groupanswer where id=@id and subscriberId=@subscriberid
 end

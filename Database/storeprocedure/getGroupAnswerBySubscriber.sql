@@ -15,7 +15,7 @@ create procedure getGroupsBySubscriber
 )
 as
 begin
-select groupanswer.id,(subscriber.firstname+' '+subscriber.lastname) as subscribername,groupanswer.topic,groupanswer.creationDate
-from groupanswer inner join subscriber on subscriber.id=groupanswer.subscriberId where subscriber.id=@subscriberid 
+select groupanswer.id,subscriber.id as subscriberid,(subscriber.firstname+' '+subscriber.lastname) as subscribername,groupanswer.topic,groupanswer.creationDate
+from groupanswer inner join subscriber on subscriber.id=groupanswer.subscriberId where groupanswer.subscriberId=@subscriberid
 
 end

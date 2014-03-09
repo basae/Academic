@@ -15,5 +15,7 @@ namespace AcademicProject
         public string r3 { get; set; }
         public string r4 { get; set; }
         public string correctAnswer { get; set; }
+        public string typeAnswer { get; set; }
+        public decimal points { get; set; }
     }
 }
