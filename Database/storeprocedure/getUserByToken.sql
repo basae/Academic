@@ -11,9 +11,10 @@ GO
 
 create procedure getUserByToken
 (
-@token varchar(50)
+@username varchar(50),
+@password varchar(50)
 )
 as
 begin
-select subscriber.* from subscriber inner join loginuser on loginuser.userid=subscriber.id where loginuser.token=@token
+select *from subscriber where username=@username and pass=@password
 end

@@ -26,39 +26,69 @@ namespace ApiAcademic.Controllers
         }
 
         // GET api/subscriber/5
-        public Subscriber Get(long id)
+        public async Task<Subscriber> Get(long id)
         {
             if (id == 0)
+            {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
+
+            if (id != Context.CurrentUser.User.Id)
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+
+            }
+
+            return await  _subscriberrepository.getSubscriberById(id);
             
-            return _subscriberrepository.getSubscriberById(id);
         }
 
         // POST api/subscriber
-        public long Post([FromBody]Subscriber subscriber)
+        public async Task<long> Post([FromBody]Subscriber subscriber)
         {
-            if(!ValidateSubscriber(subscriber))
+            if (!ValidateSubscriber(subscriber))
+            {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
 
-           return _subscriberrepository.SaveSubscriber(subscriber);
+            if (subscriber.id != -1)
+            {
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
+
+           return await _subscriberrepository.SaveSubscriber(subscriber);
         }
 
         // PUT api/subscriber/5
-        public long Put([FromBody]Subscriber subscriber)
+        public async Task<long> Put([FromBody]Subscriber subscriber)
         {
             if (!ValidateSubscriber(subscriber))
+            {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
 
-            return _subscriberrepository.SaveSubscriber(subscriber);
+            if (subscriber.id != Context.CurrentUser.User.Id)
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+
+            return await _subscriberrepository.SaveSubscriber(subscriber);
         }
 
         // DELETE api/subscriber/5
-        public bool Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            if (id==0)
+            if (id == 0)
+            {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
 
-            return _subscriberrepository.DeleteSubscriber(id);
+            if (id != Context.CurrentUser.User.Id)
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+
+            return await _subscriberrepository.DeleteSubscriber(id);
         }
 
         public bool ValidateSubscriber(Subscriber subscriber)

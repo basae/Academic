@@ -1,14 +1,14 @@
 create database academicanswers
-
 go
 
 use academicanswers
 
 go
 
+
 create table subscriber(
 id int identity not null primary key,
-username varchar(50),
+username varchar (50) unique,
 pass varchar(50),
 firstname varchar(50),
 lastname varchar(50),

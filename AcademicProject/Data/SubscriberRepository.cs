@@ -49,11 +49,11 @@ namespace Data
                 }
             }
 
-        public Subscriber getSubscriberById(long id)
+        public async Task<Subscriber> getSubscriberById(long id)
         {
             using (SqlConnection con = new SqlConnection(sqlConnection))
             {
-                con.Open();
+                await con.OpenAsync();
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -84,11 +84,11 @@ namespace Data
 
         }
 
-        public long SaveSubscriber(Subscriber subscriber)
+        public async Task<long> SaveSubscriber(Subscriber subscriber)
         {
             using (SqlConnection con = new SqlConnection(sqlConnection))
             {
-                con.Open();
+                await con.OpenAsync();
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -108,11 +108,11 @@ namespace Data
             }
         }
 
-        public bool DeleteSubscriber(long id)
+        public async Task<bool> DeleteSubscriber(long id)
         {
             using (SqlConnection con = new SqlConnection(sqlConnection))
             {
-                con.Open();
+                await con.OpenAsync();
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;

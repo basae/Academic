@@ -44,8 +44,8 @@ namespace ApiAcademic
 
             config.Routes.MapHttpRoute(
                 name: "Subscriber",
-                routeTemplate: "api/subscribers/{subscriberId}/",
-                defaults: new { subscriberId = RouteParameter.Optional, controller = "Subscriber" }
+                routeTemplate: "api/subscribers/{id}",
+                defaults: new { id = RouteParameter.Optional, controller = "Subscriber" }
 
             );
 
