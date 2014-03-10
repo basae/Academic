@@ -12,13 +12,20 @@ using System.Web.Http.Controllers;
 using System.Web.Http.ModelBinding;
 using System.Web.Http.Routing;
 using AcademicProject;
+using ApiAcademic.Core;
 
 namespace System.Web.Http
 {
     // Resumen:
     //     Defines properties and methods for API controller.
-    public abstract class BaseController : ApiController,IDisposable
+    public abstract class BaseController : ApiController, IContextAware
     {
-        public ContextModel currentUser { get; set; }
+        public IApplicationContext Context { get; private set; }
+        public BaseController()
+        {
+            Context = new AuthenticatedContext { Unrestricted = false };
+        }
     }
+
+
 }

@@ -18,13 +18,10 @@ namespace ApiAcademic.Controllers
         
         private SubscriberRepository _subscriberrepository;
         public SubscriberController(){
-            _subscriberrepository = new SubscriberRepository();
-            
-            
+            _subscriberrepository = new SubscriberRepository();            
         }
         public async Task<IEnumerable<Subscriber>> Get()
         {
-            var test = currentUser;
             return await _subscriberrepository.getSubscribers();
         }
 

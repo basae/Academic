@@ -129,8 +129,16 @@
     <Compile Include="Controllers\ListAnswerController.cs" />
     <Compile Include="Controllers\SubscriberController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Core\ApiUser.cs" />
+    <Compile Include="Core\AuthenticatedContext.cs" />
     <Compile Include="Core\Authorization.cs" />
     <Compile Include="Core\BaseController.cs" />
+    <Compile Include="Core\ExceptionLoggerFilter.cs" />
+    <Compile Include="Core\IApplicationContext.cs" />
+    <Compile Include="Core\IContextAware.cs" />
+    <Compile Include="Core\TokenAuthenticationFilter.cs" />
+    <Compile Include="Core\TokenAuthorizationFilter.cs" />
+    <Compile Include="Core\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

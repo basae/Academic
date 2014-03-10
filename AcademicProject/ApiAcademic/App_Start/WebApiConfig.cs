@@ -10,7 +10,8 @@ namespace ApiAcademic
     {
         public static void Register(HttpConfiguration config)
         {
-                       
+            config.Filters.Add(new TokenAuthenticationFilter());
+            config.Filters.Add(new ExceptionLoggerFilter());
             
 
             config.Routes.MapHttpRoute(
@@ -53,8 +54,6 @@ namespace ApiAcademic
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
-            config.Filters.Add(new Authenticate());
         }
     }
 }

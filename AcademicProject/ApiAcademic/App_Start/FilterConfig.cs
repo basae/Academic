@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using ApiAcademic.Core;
+using System.Web;
 using System.Web.Mvc;
 
 namespace ApiAcademic
@@ -8,6 +9,7 @@ namespace ApiAcademic
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new TokenAuthorizationFilter());
         }
     }
 }
