@@ -6,10 +6,12 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using AcademicProject;
+using ApiAcademic.Core;
 using Data;
 
 namespace ApiAcademic.Controllers
 {
+    [Authenticate]
     public class AnswerController : ApiController
     {
         // GET api/answer
@@ -18,6 +20,7 @@ namespace ApiAcademic.Controllers
         public AnswerController()
         {
             _answerRepository = new AnswerRepository();
+            
         }
 
         public async Task<IEnumerable<Answer>> Get(long groupId)

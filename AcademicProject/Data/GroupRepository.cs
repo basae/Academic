@@ -11,6 +11,7 @@ using System.Data;
 
 namespace Data
 {
+    
     public class GroupRepository : BaseRepository
     {
         public GroupRepository()

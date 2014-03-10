@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using ApiAcademic.Core;
 
 namespace ApiAcademic
 {
@@ -52,6 +53,8 @@ namespace ApiAcademic
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Filters.Add(new Authenticate());
         }
     }
 }

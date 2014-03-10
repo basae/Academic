@@ -19,6 +19,15 @@ regDate datetime
 
 go
 
+create table loginuser(
+userid int unique,
+token varchar(50),
+lastlogin datetime,
+foreign key (userid) references subscriber
+)
+
+go
+
 create table groupanswer(
 id int identity not null primary key,
 subscriberId int,

@@ -6,10 +6,12 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using AcademicProject;
+using ApiAcademic.Core;
 using Data;
 
 namespace ApiAcademic.Controllers
 {
+    [Authenticate]
     public class GroupController : ApiController
     {
         private GroupRepository _groupanswerRepository;

@@ -7,18 +7,24 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using ApiAcademic.Core;
 
 namespace ApiAcademic.Controllers
 {
-    public class SubscriberController : ApiController
+    [Authenticate]
+    public class SubscriberController : BaseController
     {
         // GET api/subscriber
+        
         private SubscriberRepository _subscriberrepository;
         public SubscriberController(){
             _subscriberrepository = new SubscriberRepository();
+            
+            
         }
         public async Task<IEnumerable<Subscriber>> Get()
         {
+            var test = currentUser;
             return await _subscriberrepository.getSubscribers();
         }
 

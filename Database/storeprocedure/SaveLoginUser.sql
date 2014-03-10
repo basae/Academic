@@ -12,20 +12,21 @@ GO
 create procedure SaveLoginUser
 (
 @subscriberid int,
-token varchar(50) output
+@token varchar(50) output
 )
 as
 begin
-if(@id>0)
+if exists(select userid from loginuser where userid=@subscriberid)
 BEGIN
 update loginuser
 set token=@token,
-lastlogin=getdate()
-where userid=@subscriberid;
+lastlogin=GETDATE() where userid=@subscriberid;
 set @token=@token;
 END
 else
+begin
 insert into loginuser(userid,token,lastlogin) values(
-@userid,@token,GETDATE())
-set @token=@token; 
+@subscriberid,@token,GETDATE())
+set @token=@token;
+end
 end

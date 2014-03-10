@@ -45,6 +45,7 @@
     <Compile Include="GroupRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubscriberRepository.cs" />
+    <Compile Include="TokenRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AcademicProject\VMAcademicProject.csproj">

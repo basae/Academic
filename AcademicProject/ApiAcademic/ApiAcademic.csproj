@@ -129,6 +129,8 @@
     <Compile Include="Controllers\ListAnswerController.cs" />
     <Compile Include="Controllers\SubscriberController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Core\Authorization.cs" />
+    <Compile Include="Core\BaseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
