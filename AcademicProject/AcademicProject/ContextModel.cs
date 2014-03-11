@@ -10,6 +10,7 @@ namespace AcademicProject
     {
         public long userId { get; set; }
         public string username { get; set; }
+        public string password { get; set; }
         public string realName { get; set; }
         public string school { get; set; }
     }

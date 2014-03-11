@@ -6,5 +6,23 @@ body > div {
 
 body > div header{
 border:1px solid #000000;
+}
 
+/*session board*/
+
+body div.container-fluid div.row div.col-md-8 nav div > ul > li > a {
+	height:51px;
+	cursor:pointer;
+}
+body div.container-fluid div.row div.col-md-8 nav div + div {
+	border-bottom: 1px solid #DDDDDD;
+	height:51px;
+}
+
+body div.container-fluid div.row div.col-md-8 nav div + div > p {
+font-size:12px;
+}
+
+body div.container-fluid div.row div.col-md-8 nav div + div > p + p {
+font-size:9px;
 }
