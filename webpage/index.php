@@ -40,6 +40,10 @@
                             </ul>
                         </li>
                     </li>
+                    <?php
+					if(!isset($_SESSION['login_user'])){ ?>
+                    <li><a id="menu5">Registrarme!!</a></li>
+                    <?php } ?>
                     </ul>
                 </div>
                 <div class="col-lg-4">
@@ -52,7 +56,8 @@
                 </div>
             </div>
         </nav>
-        <article>
+        <article id="general_container">
+        
         </article>
         
         <footer>
@@ -67,13 +72,13 @@
 		<div class="form-group">
         	<label for="txt-username" class="col-sm-4 control-label">Usuario</label>
             <div class="col-sm-7">
-            <input id="txt-username" placeholder="usuario.." required class="form-control" />
+            <input type="text" id="txt-username" placeholder="usuario.." required class="form-control" />
             </div>
         </div>
         <div class="form-group">
             <label for="txt-password" class="col-sm-4 control-label">Contraseña</label>
             <div class="col-sm-7">
-            <input id="txt-password" placeholder="contraseña" required class="form-control" />
+            <input type="password" id="txt-password" placeholder="contraseña" required class="form-control" />
             </div>
         </div>
     </form>

@@ -20,22 +20,23 @@ $(function(){
 			}
 		}
 	});
-	$("nav > div > div:first-child > ul > li > a").one("click",function(){
+	$("nav > div > div:first-child > ul > li > a").on("click",function(){
 		Control.changeMenu($(this).attr("id"));
 	});
 	
 });
 //show form login
-var WebControl=function(){
-	
+var WebControl=function(menu){
+
 var openFormLogin=function(){
-	$("#form-login").dialog("open");	
+	$("#form-login").dialog("open");
 };
 
 //change class attribute where menu is selected
 var selectedMenu=function(menu){
 	$("header + nav > div > div:first-child > ul > li").removeClass("active");
-	$("#"+menu).parent().addClass("active");	
+	$("#"+menu).parent().addClass("active");
+	openViews(menu);	
 }
 
 //send request to api for login user
@@ -75,6 +76,30 @@ function createPhpSession(user){
 			alert("error");	
 		}
 	});
+};
+
+function openViews(menu){
+switch(menu){
+case "menu5":
+			$.ajax({
+				type:"POST",
+				url:"Pages/view_register.php",
+				data:"",
+				success: function(response){
+				$("#general_container").html(response);	
+				},
+				error: function(){
+					alert("ha ocurrido un error, intentalo de nuevo");	
+				}
+			});
+	break;
+	
+default:
+$("#general_container").html("");
+break;
+
+}
+
 };
 
 return {

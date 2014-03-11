@@ -26,3 +26,8 @@ font-size:12px;
 body div.container-fluid div.row div.col-md-8 nav div + div > p + p {
 font-size:9px;
 }
+
+#general_container{
+padding:10px;
+padding-top:20px;
+}
