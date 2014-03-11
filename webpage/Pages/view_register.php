@@ -10,7 +10,7 @@ $content='
 </div>
 <div class="col-lg-2"></div>
 </div>
-<form id="newRegister_form" class="form-horizontal">
+<form id="newRegister_form" class="form-horizontal" method="post">
 <fieldset>
 		<div class="form-group">
 			<label for="username" class="col-sm-4 control-label">Nombre de Usuario:</label>
@@ -27,9 +27,9 @@ $content='
 		</div>
 		
 		<div class="form-group">
-			<label for="confirm" class="col-sm-4 control-label">Repetir contraseña:</label>
+			<label for="confirm" class="col-sm-4 control-label">Contraseña:</label>
 			<div class="col-xs-5">
-			<input name="confirm" id="confirm" type="password" class="form-control" required placeholder="repetir contraseña" />
+			<input name="confirm" id="confirm" type="password" class="form-control" required placeholder="contraseña" />
 			</div>
 		</div>
 </fieldset>
@@ -55,6 +55,13 @@ $content='
 			<input name="email" id="email" type="email" class="form-control" required placeholder="correo electronico" />
 			</div>
 		</div>
+		
+		<div class="form-group">
+			<label for="school" class="col-sm-4 control-label">Escuela:</label>
+			<div class="col-xs-5">
+			<input name="school" id="school" type="test" class="form-control" required placeholder="escuela" />
+			</div>
+		</div>
 </fieldset>
 <fieldset>
 	<input type="submit" name="register_save" id="register_save" value="Confirmar" class="btn btn-default" />
@@ -65,6 +72,38 @@ $content='
 </div>
 <div class="col-lg-2"></div>
 </div>
+<script>
+$("#newRegister_form").submit(function(event){
+		var dataForm={
+		id:-1,
+		username:$("#username").val(),
+		password:$("#password").val(),
+		firstname:$("#firstname").val(),
+		lastname:$("#lastname").val(),
+		school:$("#school").val(),
+		email:$("#email").val()
+		};
+		var parseData=JSON.stringify(dataForm);
+		$.ajax({
+			type:"POST",
+			data:dataForm,
+			url:"http://localhost:51981/api/subscriberx/",
+			success:function(response){
+				if(response != 0){
+				alert("has sido registrado inicia sessión");	
+				}
+			},
+			beforeSend:function(){
+				alert($(this).data());
+			},
+			error:function(err){
+				alert(err.status+" "+err.exception);
+			}
+		});
+		event.preventDefault();
+		return false;
+	});
+</script>
 ';
 echo $content;
 

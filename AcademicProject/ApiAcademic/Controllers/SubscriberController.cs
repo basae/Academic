@@ -78,7 +78,7 @@ namespace ApiAcademic.Controllers
         }
 
         // DELETE api/subscriber/5
-        [Authenticate]
+       [Authenticate]
         public async Task<bool> Delete(int id)
         {
             if (id == 0)
@@ -94,7 +94,7 @@ namespace ApiAcademic.Controllers
             return await _subscriberrepository.DeleteSubscriber(id);
         }
 
-        public bool ValidateSubscriber(Subscriber subscriber)
+        private bool ValidateSubscriber(Subscriber subscriber)
         {
             bool result = true;
 

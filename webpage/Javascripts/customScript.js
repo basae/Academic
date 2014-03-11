@@ -1,6 +1,7 @@
 // JavaScript Document
 $(function(){
 	Control=WebControl();
+	Control.init();
 	$("#form-login").dialog({
 		autoOpen:false,
 		resizable:false,
@@ -22,11 +23,77 @@ $(function(){
 	});
 	$("nav > div > div:first-child > ul > li > a").on("click",function(){
 		Control.changeMenu($(this).attr("id"));
-	});
-	
+	});	
 });
 //show form login
 var WebControl=function(menu){
+
+var init=function(){
+	$.fn.serializeObject = function(){
+
+        var self = this,
+            json = {},
+            push_counters = {},
+            patterns = {
+                "validate": /^[a-zA-Z][a-zA-Z0-9_]*(?:\[(?:\d*|[a-zA-Z0-9_]+)\])*$/,
+                "key":      /[a-zA-Z0-9_]+|(?=\[\])/g,
+                "push":     /^$/,
+                "fixed":    /^\d+$/,
+                "named":    /^[a-zA-Z0-9_]+$/
+            };
+
+
+        this.build = function(base, key, value){
+            base[key] = value;
+            return base;
+        };
+
+        this.push_counter = function(key){
+            if(push_counters[key] === undefined){
+                push_counters[key] = 0;
+            }
+            return push_counters[key]++;
+        };
+
+        $.each($(this).serializeArray(), function(){
+
+            // skip invalid keys
+            if(!patterns.validate.test(this.name)){
+                return;
+            }
+
+            var k,
+                keys = this.name.match(patterns.key),
+                merge = this.value,
+                reverse_key = this.name;
+
+            while((k = keys.pop()) !== undefined){
+
+                // adjust reverse_key
+                reverse_key = reverse_key.replace(new RegExp("\\[" + k + "\\]$"), "");
+
+                // push
+                if(k.match(patterns.push)){
+                    merge = self.build([], self.push_counter(reverse_key), merge);
+                }
+
+                // fixed
+                else if(k.match(patterns.fixed)){
+                    merge = self.build([], k, merge);
+                }
+
+                // named
+                else if(k.match(patterns.named)){
+                    merge = self.build({}, k, merge);
+                }
+            }
+
+            json = $.extend(true, json, merge);
+        });
+
+        return json;
+    };
+};
 
 var openFormLogin=function(){
 	$("#form-login").dialog("open");
@@ -38,6 +105,7 @@ var selectedMenu=function(menu){
 	$("#"+menu).parent().addClass("active");
 	openViews(menu);	
 }
+
 
 //send request to api for login user
 var GotoLogin=function(usernamex,passwordx){
@@ -86,7 +154,7 @@ case "menu5":
 				url:"Pages/view_register.php",
 				data:"",
 				success: function(response){
-				$("#general_container").html(response);	
+				$("#general_container").html(response);
 				},
 				error: function(){
 					alert("ha ocurrido un error, intentalo de nuevo");	
@@ -105,6 +173,7 @@ break;
 return {
 	showLogin:openFormLogin,
 	changeMenu:selectedMenu,
-	login:GotoLogin
+	login:GotoLogin,
+	init:init
 	};
 }
