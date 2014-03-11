@@ -10,8 +10,7 @@ using System.Web.Http;
 using ApiAcademic.Core;
 
 namespace ApiAcademic.Controllers
-{
-    [Authenticate]
+{    
     public class SubscriberController : BaseController
     {
         // GET api/subscriber
@@ -20,12 +19,14 @@ namespace ApiAcademic.Controllers
         public SubscriberController(){
             _subscriberrepository = new SubscriberRepository();            
         }
+        [Authenticate]
         public async Task<IEnumerable<Subscriber>> Get()
         {
             return await _subscriberrepository.getSubscribers();
         }
 
         // GET api/subscriber/5
+        [Authenticate]
         public async Task<Subscriber> Get(long id)
         {
             if (id == 0)
@@ -60,6 +61,7 @@ namespace ApiAcademic.Controllers
         }
 
         // PUT api/subscriber/5
+        [Authenticate]
         public async Task<long> Put([FromBody]Subscriber subscriber)
         {
             if (!ValidateSubscriber(subscriber))
@@ -76,6 +78,7 @@ namespace ApiAcademic.Controllers
         }
 
         // DELETE api/subscriber/5
+        [Authenticate]
         public async Task<bool> Delete(int id)
         {
             if (id == 0)

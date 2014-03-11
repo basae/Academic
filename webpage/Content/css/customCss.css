@@ -1,0 +1,10 @@
+@charset "utf-8";
+/* CSS Document */
+body > div {
+	text-align:center;
+}
+
+body > div header{
+border:1px solid #000000;
+
+}

@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using AcademicProject;
 using Data;
+using ApiAcademic.Core;
 
 namespace ApiAcademic.Controllers
 {
-    public class ListAnswerController : ApiController
+    [Authenticate]
+    public class ListAnswerController : BaseController
     {
 
         private AnswerRepository _answerRepository;

@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using AcademicProject;
 using Data;
+using ApiAcademic.Core;
 
 namespace ApiAcademic.Controllers
 {
-    public class GroupTopicController : ApiController
+    [Authenticate]
+    public class GroupTopicController : BaseController
     {
         private GroupRepository _groupanswerRepository;
         // GET api/group

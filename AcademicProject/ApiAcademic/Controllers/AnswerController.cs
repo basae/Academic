@@ -12,7 +12,7 @@ using Data;
 namespace ApiAcademic.Controllers
 {
     [Authenticate]
-    public class AnswerController : ApiController
+    public class AnswerController : BaseController
     {
         // GET api/answer
         private AnswerRepository _answerRepository;
@@ -25,6 +25,7 @@ namespace ApiAcademic.Controllers
 
         public async Task<IEnumerable<Answer>> Get(long groupId)
         {
+
             if ((groupId == null)&&(groupId < 1))
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             return await _answerRepository.getAnswerByGroup(groupId);

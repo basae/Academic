@@ -12,7 +12,7 @@ using Data;
 namespace ApiAcademic.Controllers
 {
     [Authenticate]
-    public class GroupController : ApiController
+    public class GroupController : BaseController
     {
         private GroupRepository _groupanswerRepository;
         // GET api/group
