@@ -26,7 +26,6 @@ namespace ApiAcademic.Controllers
         }
 
         // GET api/subscriber/5
-        [Authenticate]
         public async Task<Subscriber> Get(long id)
         {
             if (id == 0)
@@ -34,11 +33,11 @@ namespace ApiAcademic.Controllers
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
 
-            if (id != Context.CurrentUser.User.Id)
-            {
-                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            //if (id != Context.CurrentUser.User.Id)
+            //{
+            //    throw new HttpResponseException(HttpStatusCode.Unauthorized);
 
-            }
+            //}
 
             return await  _subscriberrepository.getSubscriberById(id);
             

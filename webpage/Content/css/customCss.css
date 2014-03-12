@@ -10,11 +10,11 @@ border:1px solid #000000;
 
 /*session board*/
 
-body div.container-fluid div.row div.col-md-8 nav div > ul > li > a {
+body > div.container-fluid > div > div.col-md-9 > nav > div > div.col-lg-9 > ul > li > a{
 	height:51px;
 	cursor:pointer;
 }
-body div.container-fluid div.row div.col-md-8 nav div + div {
+body > div.container-fluid > div > div.col-md-9 > nav > div > div.col-lg-3 {
 	border-bottom: 1px solid #DDDDDD;
 	height:51px;
 }
@@ -23,8 +23,11 @@ body div.container-fluid div.row div.col-md-8 nav div + div > p {
 font-size:12px;
 }
 
-body div.container-fluid div.row div.col-md-8 nav div + div > p + p {
-font-size:9px;
+body > div.container-fluid > div > div.col-md-9 > nav > div > div.col-lg-3 > p:nth-child(2) {
+font-size:9.5px;
+}
+body > div.container-fluid > div > div.col-md-9 > nav > div > div.col-lg-3 > p:nth-child(2) > a{
+	cursor:pointer;
 }
 
 #general_container{

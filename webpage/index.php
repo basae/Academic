@@ -14,23 +14,23 @@
 <script type="text/javascript" src="Javascripts/customScript.js"></script>
 <script type="text/javascript" src="Javascripts/jquery-ui-1.10.4.custom.js"></script>
 
-<title>Untitled Document</title>
+<title>Edutronic</title>
 </head>
 <div class="container-fluid">
 	<div class="row">
-   	<div class="col-md-2"></div>
-    <div class="col-md-8">
+   	<div class="col-md-1"></div>
+    <div class="col-md-9">
         <header>
         	
         </header>
         
         <nav>
         	<div class="row">
-            	<div class="col-lg-8">
+            	<div class="col-lg-9">
                     <ul class="nav nav-tabs">
-                    <li><a  id="menu1">¿Quienes somos?</a></li>
-                    <li><a  id ="menu2">¿Que es Academic?</a></li>
-                    <li><a  id ="menu3">Contribuir</a></li>
+                    <li><a id="menu1">¿Quienes somos?</a></li>
+                    <li><a id ="menu2">¿Que es Academic?</a></li>
+                    <li><a id ="menu3">Contribuir</a></li>
                     <li>
                         <li class="dropdown" id="menu4">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -46,12 +46,12 @@
                     <?php } ?>
                     </ul>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                 <?php 
 				if(isset($_SESSION["login_user"]))
 				{ ?>
                     <p><strong>Bienvenido</strong>,<?php echo $_SESSION["login_user"]["name"] ?></p>
-                    <p><a href="Controls/close_session.php">Cerrar Sessión</a></p>
+                    <p><a href="Controls/close_session.php">Cerrar Sessión</a>&nbsp;&nbsp;&nbsp;<a id="user_edit">Editar perfil</a></p>
                 <?php } ?>
                 </div>
             </div>

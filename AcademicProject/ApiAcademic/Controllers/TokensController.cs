@@ -46,6 +46,7 @@ namespace ApiAcademic.Controllers
             }
 
             return new UserLogin{
+                id=isUser.userId,
                 accessToken=Convert.ToBase64String(Encoding.ASCII.GetBytes(isUser.username + " " + user.password)),
                 username=isUser.username,
                 name=isUser.realName

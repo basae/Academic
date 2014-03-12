@@ -46,8 +46,10 @@ namespace ApiAcademic.Core
             string host = actionContext.Request.Headers.Host;
 
             // for requests coming in as localhost or the internal api url, allow them as unrestricted
-            if ((host == "localhost"
-                || host == "127.0.0.1")
+            if ((host == "localhost:81"
+                || host == "127.0.0.1"
+                || host == "localhost"
+                )
                 && actionContext.ActionDescriptor.GetCustomAttributes<UnrestrictedRequestOnlyAttribute>().Any())
             {
                 controller.Context.Unrestricted = true;

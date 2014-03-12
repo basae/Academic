@@ -1,4 +1,5 @@
 // JavaScript Document
+var actionService;
 $(function(){
 	Control=WebControl();
 	Control.init();
@@ -23,12 +24,20 @@ $(function(){
 	});
 	$("nav > div > div:first-child > ul > li > a").on("click",function(){
 		Control.changeMenu($(this).attr("id"));
-	});	
+	});
+	
+	$("#user_edit").on("click",function(){
+		Control.getPHPService("Controls/getToken.php");
+		window.setTimeout(function(){
+		var test=Control.getService("http://localhost:51981/api/subscriberx/"+actionService.id,actionService.accessToken);
+		},1000);
+		
+	});
 });
 //show form login
-var WebControl=function(menu){
+var WebControl=function(){
 
-var init=function(){
+var init=function (menu){
 	$.fn.serializeObject = function(){
 
         var self = this,
@@ -93,6 +102,7 @@ var init=function(){
 
         return json;
     };
+
 };
 
 var openFormLogin=function(){
@@ -167,13 +177,63 @@ $("#general_container").html("");
 break;
 
 }
+};
 
+var PostService=function(data,url){
+	var result;
+	$.ajax({
+		type:"POST",
+		url:url,
+		data:data,
+		success: function(response){
+				result=response;
+		},
+		error: function(err){
+			result=err.status+" "+err.description;	
+		}
+	});
+	return result;
+};
+
+var getService=function(url,token){
+	var result;
+		$.ajax({
+		type:"GET",
+		url:url,
+		dataType:"json",
+		success: function(response){
+		result=response;
+		
+		},
+		error: function(err){
+		result=err.status+" "+err.description;	
+		}
+	});
+	return result;
+};
+
+var getPHPService=function(url){
+	$.ajax({
+		type:"GET",
+		async:false,
+		url:url,
+		dataType:"json",
+		success: function(response){
+		actionService=response;	
+		},
+		error: function(err){
+		actionService=err.status+" "+err.description;
+		}
+	});
 };
 
 return {
 	showLogin:openFormLogin,
 	changeMenu:selectedMenu,
 	login:GotoLogin,
-	init:init
+	init:init,
+	postService:PostService,
+	getService:getService,
+	getPHPService:getPHPService
 	};
 }

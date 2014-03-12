@@ -74,6 +74,11 @@ $content='
 </div>
 <script>
 $("#newRegister_form").submit(function(event){
+	if($("#confirm").val()!=$("#password").val())
+	{
+		alert("La contraseña y la confirmación son diferentes!!!");
+		return false;	
+	}
 		var dataForm={
 		id:-1,
 		username:$("#username").val(),
@@ -90,11 +95,9 @@ $("#newRegister_form").submit(function(event){
 			url:"http://localhost:51981/api/subscriberx/",
 			success:function(response){
 				if(response != 0){
-				alert("has sido registrado inicia sessión");	
+				alert("has sido registrado inicia sessión");
+				location.href="index.php";	
 				}
-			},
-			beforeSend:function(){
-				alert($(this).data());
 			},
 			error:function(err){
 				alert(err.status+" "+err.exception);

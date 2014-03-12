@@ -36,6 +36,11 @@ namespace ApiAcademic.Core
             string authToken;
             if (string.IsNullOrEmpty(HeaderRequest))
             {
+                if (Request.Params["Token"] != string.Empty || Request.Params["Token"] != null)
+                {
+                    authToken = Request.Params["Token"];
+                }
+                else
                 throw new ArgumentException("Request can't be authenticated - no authorization header or token parameter");
             }
             else
