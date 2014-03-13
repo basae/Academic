@@ -10,6 +10,7 @@ namespace ApiAcademic
     {
         public static void Register(HttpConfiguration config)
         {
+            
             config.Filters.Add(new TokenAuthenticationFilter());
             config.Filters.Add(new ExceptionLoggerFilter());
             

@@ -1,0 +1,4 @@
+C:\Users\edrei.bastar\Documents\GitHub\Academic\AcademicProject\AcademicProject\bin\Release\AcademicProject.dll
+C:\Users\edrei.bastar\Documents\GitHub\Academic\AcademicProject\AcademicProject\bin\Release\AcademicProject.pdb
+C:\Users\edrei.bastar\Documents\GitHub\Academic\AcademicProject\AcademicProject\obj\Release\AcademicProject.dll
+C:\Users\edrei.bastar\Documents\GitHub\Academic\AcademicProject\AcademicProject\obj\Release\AcademicProject.pdb

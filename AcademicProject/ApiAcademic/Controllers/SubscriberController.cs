@@ -1,24 +1,24 @@
 ﻿using AcademicProject;
 using Data;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using ApiAcademic.Core;
 
 namespace ApiAcademic.Controllers
-{    
+{
     public class SubscriberController : BaseController
     {
         // GET api/subscriber
         
         private SubscriberRepository _subscriberrepository;
-        public SubscriberController(){
+
+        public SubscriberController()
+        {
             _subscriberrepository = new SubscriberRepository();            
         }
+
         [Authenticate]
         public async Task<IEnumerable<Subscriber>> Get()
         {
@@ -26,6 +26,7 @@ namespace ApiAcademic.Controllers
         }
 
         // GET api/subscriber/5
+        [Authenticate]
         public async Task<Subscriber> Get(long id)
         {
             if (id == 0)
@@ -33,11 +34,11 @@ namespace ApiAcademic.Controllers
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
 
-            //if (id != Context.CurrentUser.User.Id)
-            //{
-            //    throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            if (id != Context.CurrentUser.User.Id)
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
 
-            //}
+            }
 
             return await  _subscriberrepository.getSubscriberById(id);
             

@@ -11,7 +11,9 @@
 <!-- Script area -->
 <script type="text/javascript" src="Javascripts/jquery 1.11.js"></script>
 <script type="text/javascript" src="Javascripts/bootstrap.js"></script>
+<script type="text/javascript" src="Javascripts/Edutronic.Controls.js"></script>
 <script type="text/javascript" src="Javascripts/customScript.js"></script>
+
 <script type="text/javascript" src="Javascripts/jquery-ui-1.10.4.custom.js"></script>
 
 <title>Edutronic</title>

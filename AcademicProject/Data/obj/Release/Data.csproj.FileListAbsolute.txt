@@ -1,0 +1,7 @@
+C:\Users\edrei.bastar\Documents\GitHub\Academic\AcademicProject\Data\bin\Release\Data.dll
+C:\Users\edrei.bastar\Documents\GitHub\Academic\AcademicProject\Data\bin\Release\Data.pdb
+C:\Users\edrei.bastar\Documents\GitHub\Academic\AcademicProject\Data\bin\Release\AcademicProject.dll
+C:\Users\edrei.bastar\Documents\GitHub\Academic\AcademicProject\Data\bin\Release\AcademicProject.pdb
+C:\Users\edrei.bastar\Documents\GitHub\Academic\AcademicProject\Data\obj\Release\Data.csprojResolveAssemblyReference.cache
+C:\Users\edrei.bastar\Documents\GitHub\Academic\AcademicProject\Data\obj\Release\Data.dll
+C:\Users\edrei.bastar\Documents\GitHub\Academic\AcademicProject\Data\obj\Release\Data.pdb

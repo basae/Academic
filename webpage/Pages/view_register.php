@@ -1,5 +1,3 @@
-<?php
-$content='
 <div class="row">
 <div class="col-lg-2"></div>
 <div class="col-lg-8">
@@ -107,7 +105,3 @@ $("#newRegister_form").submit(function(event){
 		return false;
 	});
 </script>
-';
-echo $content;
-
-?>

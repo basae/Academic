@@ -1,6 +1,7 @@
 ﻿using Data;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -36,12 +37,14 @@ namespace ApiAcademic.Core
             string authToken;
             if (string.IsNullOrEmpty(HeaderRequest))
             {
-                if (Request.Params["Token"] != string.Empty || Request.Params["Token"] != null)
+                HeaderRequest = Request.Params["Token"];
+                if (string.IsNullOrEmpty(HeaderRequest))
                 {
-                    authToken = Request.Params["Token"];
+                    throw new ArgumentException("Request can't be authenticated - no authorization header or token parameter");
+                    
                 }
                 else
-                throw new ArgumentException("Request can't be authenticated - no authorization header or token parameter");
+                    authToken = authToken = HeaderRequest.Trim().Replace(" ", "+");
             }
             else
             {
@@ -85,7 +88,7 @@ namespace ApiAcademic.Core
                 .ControllerType
                 .GetInterfaces().Contains(typeof(IContextAware)));
 
-            return authenticate;
+            return authenticate && ConfigurationManager.AppSettings["Maps.Controller.Authenticate"] == "Yes";
         }
     }
 }

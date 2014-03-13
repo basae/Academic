@@ -16,4 +16,6 @@ namespace ApiAcademic.Core
 {
     public class AuthenticateAttribute : Attribute { }
     public class UnrestrictedRequestOnlyAttribute : Attribute { }
+   
+
 }
