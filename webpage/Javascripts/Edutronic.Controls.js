@@ -1,4 +1,22 @@
+var urlApi;
 var WebControl=function(){
+
+
+var init=function(){
+	$.ajax({
+        type: "GET",
+        url: "./configuration.xml",
+		dataType:"xml",            
+        success: function (response) {
+            $(response).find("apiUrl").each(function() {
+               urlApi=$(this).find("url").text(); 
+            });
+        },
+		error:function(err){
+			alert(err.description);
+		}
+    });
+}
 
 var openFormLogin=function(){
 	$("#form-login").dialog("open");
@@ -23,7 +41,9 @@ var GotoLogin=function(usernamex,passwordx){
 	$.ajax({
 		type:"POST",
 		data:parseJson,
-		url:"http://localhost/api/tokens/",
+		dataType:"json",
+		crossDomain:true,
+		url:urlApi+"tokens/",
 		success:function(done){
 			createPhpSession(done);
 		},
@@ -79,6 +99,7 @@ var PostService=function(data,url){
 		type:"POST",
 		url:url,
 		data:data,
+		crossDomain:true,
 		success: function(response){
 				result=response;
 		},
@@ -90,10 +111,12 @@ var PostService=function(data,url){
 };
 
 function getService(url,token){
+	alert(token);
 		$.ajax({
 		type:"GET",
-		async:false,
+		async:true,
 		headers: {"Authorization":"Token "+token},
+		crossDomain:true,
 		url:url,
 		dataType:"json",
 		success: function(response){
@@ -126,6 +149,7 @@ return {
 	login:GotoLogin,
 	postService:PostService,
 	getService:getService,
-	getPHPService:getPHPService
+	getPHPService:getPHPService,
+	init:init
 	};
 };

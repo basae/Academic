@@ -2,3 +2,8 @@ C:\Users\edrei.bastar\Documents\GitHub\Academic\AcademicProject\AcademicProject\
 C:\Users\edrei.bastar\Documents\GitHub\Academic\AcademicProject\AcademicProject\bin\Release\AcademicProject.pdb
 C:\Users\edrei.bastar\Documents\GitHub\Academic\AcademicProject\AcademicProject\obj\Release\AcademicProject.dll
 C:\Users\edrei.bastar\Documents\GitHub\Academic\AcademicProject\AcademicProject\obj\Release\AcademicProject.pdb
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\AcademicProject\bin\Release\AcademicProject.dll
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\AcademicProject\bin\Release\AcademicProject.pdb
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\AcademicProject\obj\Release\VMAcademicProject.csprojResolveAssemblyReference.cache
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\AcademicProject\obj\Release\AcademicProject.dll
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\AcademicProject\obj\Release\AcademicProject.pdb

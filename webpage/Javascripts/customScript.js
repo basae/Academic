@@ -3,7 +3,7 @@ var actionService;
 $(function(){
 	//inicializo los controles scripts
 	Control=WebControl();
-	
+	Control.init();
 	//inicializa el form de login
 	$("#form-login").dialog({
 		autoOpen:false,
@@ -32,7 +32,7 @@ $(function(){
 	
 	//funcionalidad cuando de click en editar perfil
 	$("#user_edit").on("click",function(){
-		Control.getPHPService("Controls/getToken.php","http://localhost/api/subscriberx/");		
+		Control.getPHPService("Controls/getToken.php",urlApi+"subscriberx/");		
 	});
 });
 //show form login

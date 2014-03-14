@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<gallery frameColor="0xFFFFFF" frameWidth="15" imagePadding="20" displayTime="6" enableRightClickOpen="true">
+<image>
+   <url>images/CAMION1.jpg</url>
+   <caption></caption>
+   <width>700</width>
+   <height>465</height>
+</image>
+<image>
+   <url>images/CAMION2.jpg</url>
+   <caption></caption>
+   <width>700</width>
+   <height>465</height>
+</image>
+<image>
+   <url>images/CAMION3.jpg</url>
+  <caption></caption>
+   <width>700</width>
+   <height>465</height>
+</image>
+<image>
+   <url>images/CAMION4.jpg</url>
+ <caption></caption>
+   <width>700</width>
+   <height>465</height>
+</image>
+</gallery>

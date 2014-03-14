@@ -5,3 +5,10 @@ C:\Users\edrei.bastar\Documents\GitHub\Academic\AcademicProject\Data\bin\Release
 C:\Users\edrei.bastar\Documents\GitHub\Academic\AcademicProject\Data\obj\Release\Data.csprojResolveAssemblyReference.cache
 C:\Users\edrei.bastar\Documents\GitHub\Academic\AcademicProject\Data\obj\Release\Data.dll
 C:\Users\edrei.bastar\Documents\GitHub\Academic\AcademicProject\Data\obj\Release\Data.pdb
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\Data\bin\Release\Data.dll
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\Data\bin\Release\Data.pdb
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\Data\bin\Release\AcademicProject.dll
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\Data\bin\Release\AcademicProject.pdb
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\Data\obj\Release\Data.csprojResolveAssemblyReference.cache
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\Data\obj\Release\Data.dll
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\Data\obj\Release\Data.pdb

@@ -1,0 +1,134 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+background-color:#BBEEFF;	
+}
+.boton{
+background-color:#207FBF;
+color:#FFFFFF;
+border:1px solid white;
+width:auto;
+padding-left:15px;	
+padding-right:15px;
+padding-top:5px;
+padding-bottom:5px;
+cursor:pointer;
+color:#CCC;
+}
+.boton:hover{
+background-color:#2288DD;
+color:white;	
+}
+
+label{
+	display:block;
+	font-weight:bold;
+}
+form{
+	background-color:#74C1F5;
+	padding:20px;
+	color:#0066CC;
+	width:auto;
+	border:2px outset white;
+
+}
+textarea{
+	resize:none;
+	display:block;
+}
+caption{
+	font-size:20px;
+	color:#06F;
+	font-weight:bold;
+	font-family:Rockwell;
+}
+.aplicar th{
+	font-family:Verdana, Geneva, sans-serif;
+	background-color:#0A5F98;
+	color:#FFFFFF;
+	padding:2px;
+	border:1px solid white;
+	font-size:14px;
+}
+.aplicar td{
+	background-color:#FFF;
+	padding:5px;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:10px;
+}
+a:visited{color:blue;}
+p{
+padding:10px;
+text-align:justify;	
+}
+h1{
+	font-family:Georgia, "Times New Roman", Times, serif;
+	color:#666666;	
+}
+h2{
+	font-family:Rockwell;
+	color:#000;
+}
+h3{
+	font-family:Tahoma, Geneva, sans-serif;
+	color:#333333;
+	text-emphasis:accent;
+	text-shadow:#039M;
+}
+#ajustar{
+width:43%;
+margin:auto;
+text-align:justify;
+}
+#imagenSession{
+	position:fixed;
+	margin-top:-150px;
+	margin-left:230px;
+	background-image:url(sesion.png);
+	background-size:contain;
+	width:75px;
+	height:75px;
+}
+blockquote{
+	background-color:#2299FF;
+	background-size:cover;
+	color:#FFFFFF;
+	border:2px outset white;
+	font-size:18px;
+	font-family:Rockwell;
+}
+#des-error{
+float:left;
+width:73%;
+color:#FFFFFF;
+}
+#image-error{
+	float:left;
+	width:20%;
+	padding:2%;
+}
+#error{
+	margin:auto;
+	width:90%;
+	min-height:150px;
+		height:auto;
+	background-image:url(imagenesdise%C3%B1o/error55.png);
+	background-size:cover;
+	border:1px outset white;
+}
+#fase2{
+	background-color:#FF9;
+}
+#fase3{
+	background-color:#900;
+	color:white;
+	
+}
+#fase4{
+	background-color:#000;
+	color:white;
+}
+body > div > div:nth-child(2) > div.span8 > div:nth-child(2){
+	min-height:600px;	
+}

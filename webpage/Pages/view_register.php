@@ -9,6 +9,7 @@
 <div class="col-lg-2"></div>
 </div>
 <form id="newRegister_form" class="form-horizontal" method="post">
+<input name="id", id="id" type="hidden" value="-1" />
 <fieldset>
 		<div class="form-group">
 			<label for="username" class="col-sm-4 control-label">Nombre de Usuario:</label>
@@ -72,13 +73,14 @@
 </div>
 <script>
 $("#newRegister_form").submit(function(event){
+		event.preventDefault();
 	if($("#confirm").val()!=$("#password").val())
 	{
 		alert("La contraseña y la confirmación son diferentes!!!");
 		return false;	
 	}
 		var dataForm={
-		id:-1,
+		id:parseInt($("#id").val()),
 		username:$("#username").val(),
 		password:$("#password").val(),
 		firstname:$("#firstname").val(),
@@ -90,18 +92,23 @@ $("#newRegister_form").submit(function(event){
 		$.ajax({
 			type:"POST",
 			data:dataForm,
-			url:"http://localhost:51981/api/subscriberx/",
+			url:urlApi+"subscriberx/",
+			crossDomain:true,
 			success:function(response){
-				if(response != 0){
+				if(response > 0){
 				alert("has sido registrado inicia sessión");
 				location.href="index.php";	
+				}
+				else
+				{
+					if(response==-2)				
+						alert("email registrado");	
 				}
 			},
 			error:function(err){
 				alert(err.status+" "+err.exception);
 			}
 		});
-		event.preventDefault();
 		return false;
 	});
 </script>
