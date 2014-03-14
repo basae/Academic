@@ -1,9 +1,19 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8">
 <title>Documento sin título</title>
+<link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap/css/bootstrap.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="general.css" />
+<style>
+	body > div {
+	margin-top:8px;
+	}
+	table{
+		background-color:#FFF;	
+	}
+</style>
+
 </head>
 
 <body>
@@ -12,8 +22,11 @@
 		if((isset($_SESSION['user']))&&($_SESSION['user']=="master") ){
 		include("conexion.php");
 		$con=conex();
-		$consulta=mysql_query("select *from socio");?>
-        <table class="aplicar"><caption align="top">Socios Registrados</caption>
+		$consulta=mysql_query("select id_socio,nombre,ap,am,direccion,email from socio");?>
+        <div class="row-fluid text-center">
+        <div class="span1"></div>
+        <div class="span10">
+        <table class="table table-condensed table-hover table-striped table-bordered"><caption align="top">Socios Registrados</caption>
         <tr><th></th><th>Nombre</th><th>Dirección</th><th>Correo Electronico</th></tr>
 		<?php while($dato=mysql_fetch_array($consulta)){ ?>
 		  <tr class="normal">
@@ -26,6 +39,9 @@
 		<?php }	
 		}?>
         </table>
+        </div>
+        <div class="span1"></div>
+        </div>
 
 </body>
 </html>

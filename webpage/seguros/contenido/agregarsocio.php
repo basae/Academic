@@ -37,6 +37,7 @@ if((isset($_SESSION['user']))&&($_SESSION['user']=="master") ){
 			$ide=$dato['id_socio'];
 			$rfc=$dato['rfc'];
 			$nombre=$dato['nombre'];
+			$repre_legal=$dato["tipo_person"];
 			$ap=$dato['ap'];
 			$am=$dato['am'];
 			$dir=$dato['direccion'];
@@ -63,15 +64,16 @@ if((isset($_SESSION['user']))&&($_SESSION['user']=="master") ){
     <div class="span8">
 <h3 align="center">Ingreso de Cliente</h3>
 <form action="guardasocio.php" method="post" name="alta_socio">
-<input type="hidden" name="ide" value="<?php echo $ide ?>" readonly="readonly"/>
+<input type="hidden" name="ide" value="<?php echo $ide ?>" readonly/>
 	<label>RFC</label>
     <input type="text" name="rfc" id="rfc" value="<?php echo $rfc ?>" size="25" onblur="tranforma(this.id)" required/>
 	<div>
     <div><input type="radio" value="Fisica" id="fisica" onSelect="alert('lol')" name="tipo_person" checked/>Persona Fisica</div>
     <div><input type="radio" value="Moral" id="moral" name="tipo_person" />Persona Moral</div>
+    <div id="div_legal">
     <label>Representante Legal</label>
     <input type="text" name="repre_legal" id="repre_legal" value="<?php echo $repre_legal ?>" onblur="tranforma(this.id)" size="25" required/>
-    
+    </div>
     </div>
     <label>Nombre</label>
     <input type="text" name="nombre" id="nombre" value="<?php echo $nombre ?>" onblur="tranforma(this.id)" size="25" required/>
@@ -104,9 +106,26 @@ function tranforma(valor){
 <?php } ?>
 <script type="text/javascript">
 $(function(){
+	$("#div_legal").attr("style","visibility:hidden;");
+	
 	$("#fisica").on("click",function(event){
-		$("#repre_legal").attr("style","visibility:hidden;");
+		$("#div_legal").attr("style","visibility:hidden;");
+		$("#repre_legal").removeAttr("required");
+		$("#repre_legal").attr("value","");
+		
 	});
+	
+	$("#moral").on("click",function(event){
+		$("#div_legal").attr("style","visibility:visible;");
+		$("#repre_legal").attr("required");
+		$("#repre_legal").attr("value","");
+	});
+	<?php
+	if($repre_legal!=""){ ?>
+		$("#div_legal").attr("style","visibility:visible;");
+		$("#moral").attr("checked",true);
+	<?php }	?>
+
 });
 </script>
 </body>
