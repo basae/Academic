@@ -14,17 +14,15 @@ $(function(){
 			},
 		width:'auto',
 		height:'auto',
-		modal:true
-	});
-	
-	$("#login").on("submit",function(event){
-		event.preventDefault();
-		Control.login($("#txt-username").val(),$("#txt-password").val())
-		return false;
-	});
-	
-	$("#limpiar").on("click",function(event){
-		$("#form-login").dialog("close");
+		modal:true,
+		buttons:{
+			"Ok":function(){
+				Control.login($("#txt-username").val(),$("#txt-password").val());
+			},
+			Cancel:function(){
+				$(this).dialog("close");
+			}
+		}
 	});
 	
 	//inicio la funcionalidad de el menu
@@ -32,14 +30,9 @@ $(function(){
 		Control.changeMenu($(this).attr("id"));
 	});
 	
-	$("nav > div > div:first-child > ul > li > a").on("click",function(){
-		Control.changeMenu($(this).attr("id"));
-	});
-	
 	//funcionalidad cuando de click en editar perfil
 	$("#user_edit").on("click",function(){
 		Control.getPHPService("../Controls/getToken.php",urlApi+"subscriberx/");		
 	});
-	
 });
 //show form login

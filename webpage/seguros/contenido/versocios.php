@@ -23,15 +23,16 @@
 		include("conexion.php");
 		$con=conex();
 		$consulta=mysql_query("select id_socio,nombre,ap,am,direccion,email from socio");?>
-        <div class="row-fluid text-center">
+        <div class="row-fluid">
         <div class="span1"></div>
         <div class="span10">
-        <table class="table table-condensed table-hover table-striped table-bordered"><caption align="top">Socios Registrados</caption>
+        <table class="table table-condensed table-hover table-striped table-bordered">
+        <caption align="top">Socios Registrados</caption>
         <tr><th></th><th>Nombre</th><th>Dirección</th><th>Correo Electronico</th></tr>
 		<?php while($dato=mysql_fetch_array($consulta)){ ?>
-		  <tr class="normal">
-     			 <td><a href="agregarsocio.php?id=<?php echo $dato['id_socio']; ?>">Editar</a>&nbsp;|&nbsp;<a href="agregarsocio.php?eliminar=<?php echo $dato['id_socio']; ?>" onclick="return confirm('¿Estas seguro de Eliminar el Registro?');">Eliminar</a></td> 
-              <td nowrap="nowrap"><?php echo $dato['nombre']." ".$dato['ap']." ".$dato['am']; ?></td>
+		  <tr>
+     			 <td><a href="agregarsocio.php?id=<?php echo $dato['id_socio']; ?>">Editar</a>&nbsp;|&nbsp;<a href="agregarsocio.php?eliminar=<?php echo $dato['id_socio']; ?>" onClick="return confirm('¿Estas seguro de Eliminar el Registro?');">Eliminar</a></td> 
+              <td><?php echo $dato['nombre']." ".$dato['ap']." ".$dato['am']; ?></td>
               <td><?php echo $dato['direccion']; ?></td>					
 				<td><?php echo $dato['email']; ?></td>
 

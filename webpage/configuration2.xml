@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Configuration>
 	<apiUrl>
-		<url>https://187.172.192.111/api/</url>
-<!--		<url>https://localhost/api/</url> -->
+		<url>https://localhost/api/</url>
 	</apiUrl>
 </Configuration>

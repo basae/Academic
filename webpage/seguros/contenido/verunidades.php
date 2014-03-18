@@ -1,21 +1,19 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!doctype html>
+<html>
 <head>
-
-<meta name="Description" content="Information architecture, Web Design, Web Standards." />
-<meta name="Keywords" content="your, keywords" />
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<meta name="Distribution" content="Global" />
-<meta name="Author" content="Edrei Javier Bastar Sarao - basae_01@hotmail.com" />
-<meta name="Robots" content="index,follow" />
+<meta charset="utf-8">
 <title></title>
-<script src="SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
-<script src="SpryAssets/SpryValidationTextarea.js" type="text/javascript"></script>
 <?php session_start() ?>
-<link href="SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
-<link href="SpryAssets/SpryValidationTextarea.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap/css/bootstrap.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="general.css" />
+<style>
+	body > div {
+	margin-top:8px;
+	}
+	table{
+		background-color:#FFF;	
+	}
+</style>
 </head>
 
 <body>
@@ -23,13 +21,15 @@
 	<?php 
 	include("conexion.php");
 	$con=conex();
-	$consulta=mysql_query("select unidad.unidad,unidad.id,unidad.marca,unidad.modelo,unidad.no_serie,unidad.no_motor,unidad.uso,unidad.placas_federales,unidad.placas_estatales,socio.id_socio,socio.nombre,socio.ap,socio.am from unidad inner join socio on unidad.id_socio=socio.id_socio",$con); ?>
-	<table class="aplicar">
+	$consulta=mysql_query("select unidad.unidad,unidad.id,unidad.marca,unidad.modelo,unidad.no_serie,unidad.no_motor,unidad.uso,unidad.placas_federales,unidad.placas_estatales,socio.id_socio,socio.nombre,socio.ap,socio.am,unidad.imagen from unidad inner join socio on unidad.id_socio=socio.id_socio",$con); ?>
+    <div class="row-fluid">
+    <div class="span12">
+	<table class="table table-condensed table-hover table-striped table-bordered">
     <caption>Unidades Registradas</caption>
     	<tr><th ></th><th>Unidad</th><th>Marca</th><th>Modelo</th><th>Nombre</th><th>Uso</th><th>Placas Est.</th><th>Placas Fed.</th></tr>
         <?php while($dato=mysql_fetch_array($consulta)){ ?>
-        <tr class="normal">
-        	<td nowrap="nowrap"><a href="agreunidad.php?id=<?php echo $dato['id'] ?>">Editar</a>|<a href="agreunidad.php?eliminar=<?php echo $dato['id'] ?>" onclick="return confirm('¿Estas Seguro de Eliminar el Registro?')">Eliminar</a></td>
+        <tr>
+        	<td><a href="agreunidad.php?id=<?php echo $dato['id'] ?>">Editar</a>|<a href="agreunidad.php?eliminar=<?php echo $dato['id'] ?>" onclick="return confirm('Â¿Estas Seguro de Eliminar el Registro?')">Eliminar</a><br/><a target="_new" href="unidades/<?php echo $dato['imagen'] ?>">Ver..</a></td>
      	<td><?php echo $dato['unidad'] ?></td>
         <td><?php echo $dato['marca'] ?></td>
         <td><?php echo $dato['modelo'] ?></td>
@@ -40,5 +40,7 @@
         </tr>
         <?php } ?>
     </table>
+    </div>
+       </div>
 </body>
 </html>

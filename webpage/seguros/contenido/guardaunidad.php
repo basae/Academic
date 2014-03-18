@@ -27,18 +27,60 @@ $reg_federal=$_POST['reg_federal'];
 $reg_publico=$_POST['reg_publico'];
 $uso=$_POST['uso'];
 $servicio=$_POST['servicio'];
+
+$nombre=$_FILES['imagen_auto']['name'];
+$temporal=$_FILES['imagen_auto']['tmp_name'];
+$ext=pathinfo($nombre);
+$tamaño=($_FILES['imagen_auto']['size'])/1024;
+$alea=rand(100,1000);
+
+
 include("conexion.php");
 $con=conex();
+
 $consulta=mysql_query("select *from unidad where id=$id",$con);
 if(!mysql_fetch_array($consulta)){
-mysql_query("insert into unidad values($id,'$unidad','$marca','$modelo','$placas_es','$placas_fe','$motor','$serie',$socio,'$uso','$descr','$origen','$color',$puertas,$ocupantes,'$reg_federal','$reg_publico','$servicio')",$con) or die(header("location:agreunidad.php?unidad=$unidad&marca=$marca&modelo=$modelo&placas_es=$placas_es&placas_fe=$placas_fe&motor=$motor&serie=$serie&socio=$socio&uso=$uso&descripcion=$descr&origen=$origen&color=$color&puertas=$puertas&ocupantes=$ocupantes&reg_federal=$reg_federal&reg_publico=$reg_publico&servicio=$servicio&error=".mysql_error()));
+if($tamaño<40000){
+if(is_uploaded_file($temporal)){
+if(($ext["extension"]=="jpg")||($ext["extension"]=="png")||($ext["extension"]=="gif")){
+				copy($temporal,"unidades/".$alea."_".$nombre);
+mysql_query("insert into unidad values($id,'$unidad','$marca','$modelo','$placas_es','$placas_fe','$motor','$serie',$socio,'$uso','$descr','$origen','$color',$puertas,$ocupantes,'$reg_federal','$reg_publico','$servicio','".$alea."_".$nombre."')",$con) or die(header("location:agreunidad.php?unidad=$unidad&marca=$marca&modelo=$modelo&placas_es=$placas_es&placas_fe=$placas_fe&motor=$motor&serie=$serie&socio=$socio&uso=$uso&descripcion=$descr&origen=$origen&color=$color&puertas=$puertas&ocupantes=$ocupantes&reg_federal=$reg_federal&reg_publico=$reg_publico&servicio=$servicio&error=".mysql_error()));
 echo "<script>alert('La unidad ha sido guardada');location.href='verunidades.php';</script>";
 }
 else{
-	mysql_query("update unidad set unidad='$unidad',marca='$marca',modelo='$modelo',placas_estatales='$placas_es',placas_federales='$placas_fe',no_motor='$motor',no_serie='$serie',id_socio=$socio,uso='$uso',descripcion='$descr',origen='$origen',color='$color',no_puertas=$puertas,no_ocupantes=$ocupantes,registro_federal='$reg_federal',registro_publico='$reg_publico',servicio='$servicio' where id=$id")or die(header("location:agreunidad.php?unidad=$unidad&marca=$marca&modelo=$modelo&placas_es=$placas_es&placas_fe=$placas_fe&motor=$motor&serie=$serie&socio=$socio&uso=$uso&descripcion=$descr&origen=$origen&color=$color&puertas=$puertas&ocupantes=$ocupantes&reg_federal=$reg_federal&reg_publico=$reg_publico&servicio=$servicio&error=".mysql_error()));
-echo "<script>alert('La unidad ha sido Actualizada');location.href='verunidades.php';</script>";
+				header("location:agreunidad.php?unidad=$unidad&marca=$marca&modelo=$modelo&placas_es=$placas_es&placas_fe=$placas_fe&motor=$motor&serie=$serie&socio=$socio&uso=$uso&descripcion=$descr&origen=$origen&color=$color&puertas=$puertas&ocupantes=$ocupantes&reg_federal=$reg_federal&reg_publico=$reg_publico&servicio=$servicio&error=Extension Invalida");	
 }
 }
+else{
+			header("location:agreunidad.php?unidad=$unidad&marca=$marca&modelo=$modelo&placas_es=$placas_es&placas_fe=$placas_fe&motor=$motor&serie=$serie&socio=$socio&uso=$uso&descripcion=$descr&origen=$origen&color=$color&puertas=$puertas&ocupantes=$ocupantes&reg_federal=$reg_federal&reg_publico=$reg_publico&servicio=$servicio&error=falta seleccionar la foto");
+}
+}
+else{
+	header("location:agreunidad.php?unidad=$unidad&marca=$marca&modelo=$modelo&placas_es=$placas_es&placas_fe=$placas_fe&motor=$motor&serie=$serie&socio=$socio&uso=$uso&descripcion=$descr&origen=$origen&color=$color&puertas=$puertas&ocupantes=$ocupantes&reg_federal=$reg_federal&reg_publico=$reg_publico&servicio=$servicio&error=Excede el Tamaño Permitido");}
+}
+}
+
+else{
+if($tamaño<40000){
+if(is_uploaded_file($temporal)){
+if($_POST['anterior']!=""){unlink("unidades/".$_POST['anterior']);}
+if(($ext["extension"]=="jpg")||($ext["extension"]=="png")||($ext["extension"]=="gif")){
+	
+			mysql_query("update unidad set unidad='$unidad',marca='$marca',modelo='$modelo',placas_estatales='$placas_es',placas_federales='$placas_fe',no_motor='$motor',no_serie='$serie',id_socio=$socio,uso='$uso',descripcion='$descr',origen='$origen',color='$color',no_puertas=$puertas,no_ocupantes=$ocupantes,registro_federal='$reg_federal',registro_publico='$reg_publico',servicio='$servicio',imagen='".$alea."_".$nombre."' where id=$id")or die(header("location:agreunidad.php?unidad=$unidad&marca=$marca&modelo=$modelo&placas_es=$placas_es&placas_fe=$placas_fe&motor=$motor&serie=$serie&socio=$socio&uso=$uso&descripcion=$descr&origen=$origen&color=$color&puertas=$puertas&ocupantes=$ocupantes&reg_federal=$reg_federal&reg_publico=$reg_publico&servicio=$servicio&error=".mysql_error()));
+		echo "<script>alert('La unidad ha sido Actualizada');location.href='verunidades.php';</script>";
+		}
+else
+{			header("location:agreunidad.php?unidad=$unidad&marca=$marca&modelo=$modelo&placas_es=$placas_es&placas_fe=$placas_fe&motor=$motor&serie=$serie&socio=$socio&uso=$uso&descripcion=$descr&origen=$origen&color=$color&puertas=$puertas&ocupantes=$ocupantes&reg_federal=$reg_federal&reg_publico=$reg_publico&servicio=$servicio&error=Extension Invalida");
+}
+}
+else{
+mysql_query("update unidad set unidad='$unidad',marca='$marca',modelo='$modelo',placas_estatales='$placas_es',placas_federales='$placas_fe',no_motor='$motor',no_serie='$serie',id_socio=$socio,uso='$uso',descripcion='$descr',origen='$origen',color='$color',no_puertas=$puertas,no_ocupantes=$ocupantes,registro_federal='$reg_federal',registro_publico='$reg_publico',servicio='$servicio',imagen='".$_POST['anterior']."' where id=$id")or die(header("location:agreunidad.php?unidad=$unidad&marca=$marca&modelo=$modelo&placas_es=$placas_es&placas_fe=$placas_fe&motor=$motor&serie=$serie&socio=$socio&uso=$uso&descripcion=$descr&origen=$origen&color=$color&puertas=$puertas&ocupantes=$ocupantes&reg_federal=$reg_federal&reg_publico=$reg_publico&servicio=$servicio&error=".mysql_error()));
+}
+}
+//error de tamaño
+header("location:agreunidad.php?unidad=$unidad&marca=$marca&modelo=$modelo&placas_es=$placas_es&placas_fe=$placas_fe&motor=$motor&serie=$serie&socio=$socio&uso=$uso&descripcion=$descr&origen=$origen&color=$color&puertas=$puertas&ocupantes=$ocupantes&reg_federal=$reg_federal&reg_publico=$reg_publico&servicio=$servicio&error=Excede el Tamaño Permitido");}
+
+	
 ?>
 </body>
 </html>

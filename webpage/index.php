@@ -1,4 +1,3 @@
-<?php 	session_start(); ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,14 +15,14 @@
 
 <script type="text/javascript" src="Javascripts/jquery-ui-1.10.4.custom.js"></script>
 
-<title>Edutronic</title>
+<title>Eductronic</title>
 </head>
 <div class="container-fluid">
 	<div class="row">
    	<div class="col-md-1"></div>
     <div class="col-md-9">
         <header>
-        	
+        	<img src="Content/images/1.2.png"/>
         </header>
         
         <nav>
@@ -33,7 +32,6 @@
                     <li><a id="menu1">¿Quienes somos?</a></li>
                     <li><a id ="menu2">¿Que es Academic?</a></li>
                     <li><a id ="menu3">Contribuir</a></li>
-                    <li>
                         <li class="dropdown" id="menu4">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             Miembros<span class="caret"></span>
@@ -41,20 +39,10 @@
                                 <li><a href="javascript:Control.showLogin()">inicio de Sessión</a></li>
                             </ul>
                         </li>
-                    </li>
-                    <?php
-					if(!isset($_SESSION['login_user'])){ ?>
                     <li><a id="menu5">Registrarme!!</a></li>
-                    <?php } ?>
                     </ul>
                 </div>
                 <div class="col-lg-3">
-                <?php 
-				if(isset($_SESSION["login_user"]))
-				{ ?>
-                    <p><strong>Bienvenido</strong>,<?php echo $_SESSION["login_user"]["name"] ?></p>
-                    <p><a href="Controls/close_session.php">Cerrar Sessión</a>&nbsp;&nbsp;&nbsp;<a id="user_edit">Editar perfil</a></p>
-                <?php } ?>
                 </div>
             </div>
         </nav>
@@ -83,9 +71,10 @@
             <input type="password" id="txt-password" placeholder="contraseña" required class="form-control" />
             </div>
         </div>
+        <button type="submit" id="enviar" class="btn btn-primary">OK</button>
+        <button type="reset" id="limpiar" class="btn btn-default">Cancelar</button>
     </form>
 </div>
-
 <body>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap/css/bootstrap.css" media="screen" />
-<title>Sociedad Cooperativa</title>
+<title>Tramite y Solucíon S.C.</title>
 <?php session_start() ?>
 <script src="jquery-ui/jquery 1.11.js"></script>
 <script language="javascript" src="sonidos.js" type="text/javascript"></script>
@@ -19,14 +19,14 @@
             <div id="menu">
               <table>
                 <tr>
-                    <th><a href="index.php" onmouseover="mouseoversound.playclip()" onclick="clicksound.playclip()">Inicio</a></th>
+                    <th><a href="index.php" onMouseOver="mouseoversound.playclip()" onClick="clicksound.playclip()">Inicio</a></th>
                     <?php if((isset($_SESSION['user']))&&($_SESSION['user']=="master")){  ?>
-                    <th><a href="menu.php?id=Clientes" target="contmenu" onmouseover="mouseoversound.playclip()" onclick="clicksound.playclip()">Clientes</a></th>
+                    <th><a href="menu.php?id=Clientes" target="contmenu" onMouseOver="mouseoversound.playclip()" onClick="clicksound.playclip()">Clientes</a></th>
         
-                    <th><a href="menu.php?id=Unidades" target="contmenu" onmouseover="mouseoversound.playclip()" onclick="clicksound.playclip()">Unidades</a></th>
+                    <th><a href="menu.php?id=Unidades" target="contmenu" onMouseOver="mouseoversound.playclip()" onClick="clicksound.playclip()">Unidades</a></th>
                     <?php } ?>
                      <?php if((isset($_SESSION['user']))&&(($_SESSION['user']=="master")||($_SESSION['user']=="user"))){  ?>
-                    <th><a href="menu.php?id=Polizas" target="contmenu" onmouseover="mouseoversound.playclip()" onclick="clicksound.playclip()">Polizas</a></th>
+                    <th><a href="menu.php?id=Polizas" target="contmenu" onMouseOver="mouseoversound.playclip()" onClick="clicksound.playclip()">Polizas</a></th>
                     <?php } ?>
                 </tr>
               </table>

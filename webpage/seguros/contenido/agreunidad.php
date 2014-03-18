@@ -16,6 +16,7 @@ $con=conex();
 if((isset($_SESSION['user']))&&($_SESSION['user']=="master") ){
 	$ide="";
 	if(isset($_GET['unidad'])){$unidad=$_GET['unidad'];}else{$unidad="";}
+	if(isset($_GET['archivo'])){$archivo=$_GET['archivo'];}else{$archivo="";}
 	if(isset($_GET['origen'])){$origen=$_GET['origen'];}else{$origen="";}
 	if(isset($_GET['marca'])){$marca=$_GET['marca'];}else{$marca="";}
 	if(isset($_GET['modelo'])){$modelo=$_GET['modelo'];}else{$modelo="";}
@@ -53,6 +54,7 @@ if((isset($_SESSION['user']))&&($_SESSION['user']=="master") ){
 			$reg_federal=$dato['registro_federal'];
 			$reg_publico=$dato['registro_publico'];
 			$servicio=$dato['servicio'];
+			$archivo=$dato['imagen'];
 		}
 	}
 	if(isset($_GET['eliminar'])){
@@ -78,24 +80,17 @@ if((isset($_SESSION['user']))&&($_SESSION['user']=="master") ){
     </div>
 </div>
 	<?php } ?>
-<div id="ajustar" style="width:80%">
+<div class="row-fluid">
+	<div class="span1"></div>
+    <div class="span10">
 	<h3 align="center">Ingreso de Unidades</h3>
-	<form name="alta" method="post" action="guardaunidad.php" class="form-horizontal">
+	<form name="alta" method="post" action="guardaunidad.php" class="form" enctype="multipart/form-data">
     <fieldset>
-    <table>
-            <input type="hidden" name="ide" value="<?php echo $ide ?>" readonly="readonly"/>
-            <tr>
-            	<td><label>No. Eco.</label></td>
-          </tr>
-          <tr>
-              <td><input type="text" name="unidad" id="unidad" value="<?php echo $unidad ?>" size="25" onblur="tranforma(this.id)" /></td>
-          </tr>
-          <tr>
-          	<td><label>Cliente</label></td>
-          </tr>
-          <tr>
-          	<td>
-                <select name="socio" id="socio">
+            <input type="hidden" name="ide" value="<?php echo $ide ?>" readonly/>
+           	<label onKeyDown="unidad">No. Eco.</label>
+			<input type="text" name="unidad" id="unidad" value="<?php echo $unidad ?>" required onBlur="tranforma(this.id)" />
+          	<label for="socio">Cliente</label>
+            <select name="socio" id="socio" required>
                 <?php
                   $consulta=mysql_query("select id_socio,nombre,ap,am from socio",$con); ?>
                   <option value=""></option>
@@ -103,116 +98,63 @@ if((isset($_SESSION['user']))&&($_SESSION['user']=="master") ){
                 <option value="<?php echo $dato[0] ?>"><?php echo $dato[1]." ".$dato[2]." ".$dato[3] ?></option>
                 <?php } ?>
                 </select>
-            </td>
-         </tr>
-         <tr>
-         	<td>
-            	<table>
-                	<tr>
-                    	<td><label>Servicio</label></td>
-                        <td><LABEL>Uso</LABEL></td>
-                    </tr>
-          			<tr>
-                    	<td>
-                          <select name="servicio" id="servicio">
-                          <option value="">Selecciona un tipo de servicio</option>
-                          <option value="PARTICULAR">PARTICULAR</option>
-                          <option value="PÚBLICO">PÚBLICO</option>
-                          <option value="PÚBLICO FEDERAL">PÚBLICO FEDERAL (CARGA)</option>
-                  			</select>
-              			</td>
-          				<td>
-                            <select name="uso" id="uso" >
-                            <option value="">Selecciona el uso</option>
-                            <option value="CARGA">CARGA</option>
-                            <option value="LOCAL">LOCAL</option>
-                            <option value="FORÁNEO">FORÁNEO</option>
-                            <option value="TURISMO">TURISMO</option>
-                            <option value="TRANSPORTE DE PERSONAL">TRANSPORTE DE PERSONAL</option>
-                            <option value="TAXI">TAXI</option>
-                            <option value="TAXI">PARTICULAR</option>
-                            </select>
-            			</td>
-            	</tr>
-            </table>
-		</td>
-	</tr>
-	<tr>
-    	<td><label>Origen de la unidad (Legalizado, Nacional, etc.)</label></td>
-	</tr>
-    <tr>
-    	<td><input type="text" name="origen" id="origen" value="<?php echo $origen ?>" onblur="tranforma(this.id);" /></td>
-	</tr>
-    <tr>
-    	<td>
-        	<table>
-            	<tr>
-                	<td><label>Marca</label></td>
-                    <td><label>Modelo</label></td>
-                    <td><label>Color</label></td>
-				</tr>
-                <tr>
-                	<td><input type="text" name="marca" id="marca" value="<?php echo $marca?>" onblur="tranforma(this.id)" /><td>
-                    <td><input type="text" name="modelo" id="modelo" value="<?php echo $modelo ?>" onblur="tranforma(this.id)" /></td>
-                    <td><input type="text" name="color" id="color" onblur="tranforma(this.id)" value="<?php echo $color ?>" /></td>
-				</tr>
-			</table>
-		</td>
-	</td>
-    <tr>
-    	<td>
-        	<table>
-            	<tr>
-                	<td><label>No. de Puertas</label></td>
-                    <td><label>No. de Ocupantes</label></td>
-					<td><label>Placas Estatales</label></td>
-				</tr>
-                <tr>
-                	<td><input type="text" name="puertas" id="puertas" onblur="tranforma(this.id)" value="<?php echo $puertas ?>" /></td>
-                    <td><input type="text" name="ocupantes" id="ocupantes" onblur="tranforma(this.id)" value="<?php echo $ocupantes ?>" /></td>
-                    <td><input type="text" name="placas_es" id="placas" value="<?php echo $placas_es ?>" onblur="tranforma(this.id)" /></td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-    <tr>
-    	<td>
-        	<table>
-            	<tr>
-                	<td><label>Placas Federales</label></td>
-                    <td><label>No. Motor</label></td>
-                    <td><label>No. Serie</label></td>
-				</tr>
-                <tr>
-                	<td><input type="text" name="placas_fe" id="placas_fe" value="<?php echo $placas_fe ?>" onblur="tranforma(this.id)" /></td>
-                    <td><input type="text" name="motor" id="motor" value="<?php echo $motor ?>" onblur="tranforma(this.id)"/></td>
-                    <td><input type="text" name="serie" id="serie" value="<?php echo $serie ?>" onblur="tranforma(this.id)" /></td>
-				</tr>
-                <tr>
-                	<td><label>No. Registro Federal Vehículos (hasta modelos 1990)</label></td>
-				</tr>
-                <tr>
-                	<td><input type="text" name="reg_federal" id="reg_federal" onblur="tranforma(this.id);" value="<?php echo $reg_federal ?>" /></td>        
-				</tr>
-                <tr>
-                	<td><label>Reg. Publico Vehicular (obligatorio)</label></td>
-				</tr>
-                <tr>
-                	<td><input type="text" name="reg_publico" id="reg_publico" onblur="tranforma(this.id)" value="<?php echo $reg_publico ?>" /></td>             
-				</tr>
-                <tr>
-                	<td><label>Descripción (aire acondicionado, quemacocos, equipo especial)</label></td>
-				</tr>
-                <tr>
-                	<td><textarea name="descripcion" id="descripcion" cols="57" rows="5" onblur="tranforma(this.id)"><?php echo $descr ?></textarea></td>
-				</tr>
-                <tr>
-                	<td><input name="enviar" type="submit" value="Guardar" class="boton" /><input name="limpiar" class="boton" type="reset" value="Limpiar" onclick="accion()" /></td>
-				</tr>
-      </table>
-</fieldset>
-  </form>
+               	<label for="servicio">Servicio</label>
+                <select name="servicio" id="servicio" required>
+                      <option value="">Selecciona un tipo de servicio</option>
+                      <option value="PARTICULAR">PARTICULAR</option>
+                      <option value="PÚBLICO">PÚBLICO</option>
+                      <option value="PÚBLICO FEDERAL">PÚBLICO FEDERAL (CARGA)</option>
+                    </select>
+            	<label for="uso">Uso</label>
+				<select name="uso" id="uso" required >
+                        <option value="">Selecciona el uso</option>
+                        <option value="CARGA">CARGA</option>
+                        <option value="LOCAL">LOCAL</option>
+                        <option value="FORÁNEO">FORÁNEO</option>
+                        <option value="TURISMO">TURISMO</option>
+                        <option value="TRANSPORTE DE PERSONAL">TRANSPORTE DE PERSONAL</option>
+                        <option value="TAXI">TAXI</option>
+                    <option value="TAXI">PARTICULAR</option>
+                    </select>
+			<label for="origen">Origen de la unidad (Legalizado, Nacional, etc.)</label>
+    		<input type="text" name="origen" id="origen" value="<?php echo $origen ?>" onBlur="tranforma(this.id);" />
+            
+                	<label for="marca">Marca</label>
+                	<input type="text" name="marca" id="marca" value="<?php echo $marca?>" onBlur="tranforma(this.id)" required />
+                    <label for="modelo">Modelo</label>
+                    <input type="text" name="modelo" id="modelo" value="<?php echo $modelo ?>" onBlur="tranforma(this.id)" required />
+                    <label for="color">Color</label>
+                    <input type="text" name="color" id="color" onBlur="tranforma(this.id)" value="<?php echo $color ?>" required />
+                	<label for="puertas">No. de Puertas</label>
+                	<input type="text" name="puertas" id="puertas" onBlur="tranforma(this.id)" value="<?php echo $puertas ?>" required />
+                    <label for="ocupantes">No. de Ocupantes</label>
+                    <input type="text" name="ocupantes" id="ocupantes" onBlur="tranforma(this.id)" value="<?php echo $ocupantes ?>" required />
+					<label for="placas_es">Placas Estatales</label>
+                    <input type="text" name="placas_es" id="placas" value="<?php echo $placas_es ?>" onBlur="tranforma(this.id)" />
 
+                	<label for="placas_fe">Placas Federales</label>
+                	<input type="text" name="placas_fe" id="placas_fe" value="<?php echo $placas_fe ?>" onBlur="tranforma(this.id)" />
+                    <label for="motor">No. Motor</label>
+                    <input type="text" name="motor" id="motor" value="<?php echo $motor ?>" onBlur="tranforma(this.id)" required/>
+                    <label for="serie">No. Serie</label>
+                    <input type="text" name="serie" id="serie" value="<?php echo $serie ?>" onBlur="tranforma(this.id)" required />
+                	<label for="reg_federal">No. Registro Federal Vehículos (hasta modelos 1990)</label>
+                	<input type="text" name="reg_federal" id="reg_federal" onBlur="tranforma(this.id);" value="<?php echo $reg_federal ?>" />       
+                	<label for="reg_publico">Reg. Publico Vehicular (obligatorio)</label>
+                	<input type="text" name="reg_publico" id="reg_publico" onBlur="tranforma(this.id)" value="<?php echo $reg_publico ?>" />            
+                	<label for="descripcion">Descripción (aire acondicionado, quemacocos, equipo especial)</label>
+                	<textarea name="descripcion" id="descripcion" cols="57" rows="5" onBlur="tranforma(this.id)" required><?php echo $descr ?></textarea>
+                    
+                    <label for="imagen_auto">Imagen</label>
+                    <input type="file" required name="imagen_auto" id="imagen_auto"/>
+                    <input name="anterior" id="anterior" type="hidden" value="<?php echo $archivo ?>" />
+</fieldset>
+<fieldset>                    
+                	<input name="enviar" type="submit" value="Guardar" class="boton" /><input name="limpiar" class="boton" type="reset" value="Limpiar" onClick="accion()" />
+</fieldset>
+</form>
+</div>
+<div class="span1"></div>
 </div>
 <script type="text/javascript">
 	var valor="<?php echo $uso ?>";
@@ -249,6 +191,14 @@ if((isset($_SESSION['user']))&&($_SESSION['user']=="master") ){
 	function tranforma(valor){
 		document.getElementById(valor).value=document.getElementById(valor).value.toUpperCase();
 	}
+	$(function(){
+		<?php
+			if($archivo!=""){ ?>
+			$("#imagen_auto").removeAttr("required");
+		<?php		
+			}
+		?>
+	});
 </script>
 <?php }
 else{

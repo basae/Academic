@@ -71,12 +71,18 @@
 </div>
 <div class="col-lg-2"></div>
 </div>
+<div id="msgbox" title="Eductronic"></div>
 <script>
 $("#newRegister_form").submit(function(event){
 		event.preventDefault();
+	if($("#username").val().split(" ").length>1)
+	{
+		msgbox("Tu nombre de usuario no puede contener espacios en blanco");
+		return false;
+	}
 	if($("#confirm").val()!=$("#password").val())
 	{
-		alert("La contraseña y la confirmación son diferentes!!!");
+		msgbox("La contraseña y la confirmación son diferentes!!!");
 		return false;	
 	}
 		var dataForm={
@@ -96,19 +102,39 @@ $("#newRegister_form").submit(function(event){
 			crossDomain:true,
 			success:function(response){
 				if(response > 0){
-				alert("has sido registrado inicia sessión");
+				msgbox("has sido registrado inicia sessión");
 				location.href="index.php";	
 				}
 				else
 				{
 					if(response==-2)				
-						alert("email registrado");	
+						msgbox("email registrado");	
 				}
 			},
 			error:function(err){
-				alert(err.status+" "+err.exception);
+				msgbox(err.status+" "+err.exception);
 			}
 		});
 		return false;
 	});
+	
+	function msgbox(mensaje){
+		$("#msgbox").html(mensaje);
+		$("#msgbox").dialog("open");
+	}
+	
+	$("#msgbox").dialog({
+			autoOpen:false,
+			modal:true,
+			resizable:false,
+			show:{
+				effect:"clip",
+				duration:500	
+			},
+			buttons:{
+				"Ok":function(){
+					$(this).dialog("close");
+				}
+			}
+		});
 </script>

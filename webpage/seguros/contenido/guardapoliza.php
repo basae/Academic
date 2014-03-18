@@ -70,6 +70,7 @@ else{
 	}
 	else{header("location:".$retorno."&error=Excede el Tamaño Permitido");}	
 	}
+	
 }
 
 ?>

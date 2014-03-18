@@ -23,30 +23,30 @@ switch($sele){ ?>
 <?php case "Clientes": ?>
     	<h2 align="center"><?php echo $sele ?></h2>
 		<ul>	
-		<li class="normal"><a href="contenido/agregarsocio.php" target="contenido" onmouseover="mouseoversound.playclip()" onclick="clicksound.playclip()">Crear Cliente Nuevo</a></li>
-		<li class="normal"><a href="contenido/versocios.php" onmouseover="mouseoversound.playclip()" onclick="clicksound.playclip()" target="contenido">Ver Registro de Clientes</a></li><br />
-		<li class="normal"><a href="contenido/logout.php" onmouseover="mouseoversound.playclip()" onclick="clicksound.playclip()">Cerrar Sesión</a></li>
+		<li class="normal"><a href="contenido/agregarsocio.php" target="contenido" " >Crear Cliente Nuevo</a></li>
+		<li class="normal"><a href="contenido/versocios.php" "  target="contenido">Ver Registro de Clientes</a></li><br />
+		<li class="normal"><a href="contenido/logout.php" " >Cerrar Sesión</a></li>
         </ul>
 <?php break; ?>
 
 <?php case "Unidades": ?>
 <h2 align="center"><?php echo $sele ?></h2>	
 		<ul>
-		<li class="normal"><a href="contenido/agreunidad.php" target="contenido" onmouseover="mouseoversound.playclip()" onclick="clicksound.playclip()">Agregar Nueva Unidad</a></li>
-		<li class="normal"><a href="contenido/verunidades.php" onmouseover="mouseoversound.playclip()" onclick="clicksound.playclip()" target="contenido">Ver Unidades Registradas</a></li>
+		<li class="normal"><a href="contenido/agreunidad.php" target="contenido" " >Agregar Nueva Unidad</a></li>
+		<li class="normal"><a href="contenido/verunidades.php" "  target="contenido">Ver Unidades Registradas</a></li>
         <br />
-		<li class="normal"><a href="contenido/logout.php" onmouseover="mouseoversound.playclip()" onclick="clicksound.playclip()">Cerrar Sesión</a></li>
+		<li class="normal"><a href="contenido/logout.php" " >Cerrar Sesión</a></li>
         </ul>
 <?php break; ?>
 
 <?php case "Polizas": ?>
 		<h2 align="center"><?php echo $sele ?></h2>
         <ul>
-		<li class="normal"><a href="contenido/crearpoliza.php" target="contenido" onmouseover="mouseoversound.playclip()" onclick="clicksound.playclip()">Ingresar Poliza</a></li>
-		<li class="normal"><a href="contenido/verpolizas.php" target="contenido" onmouseover="mouseoversound.playclip()" onclick="clicksound.playclip()">Ver Polizas Ingresadas</a></li>
-        <li class="normal"><a href="contenido/porcaducar.php" target="contenido" onmouseover="mouseoversound.playclip()" onclick="clicksound.playclip()">Ver Polizas por Caducar</a></li>
+		<li class="normal"><a href="contenido/crearpoliza.php" target="contenido" " >Ingresar Poliza</a></li>
+		<li class="normal"><a href="contenido/verpolizas.php" target="contenido" " >Ver Polizas Ingresadas</a></li>
+        <li class="normal"><a href="contenido/porcaducar.php" target="contenido" " >Ver Polizas por Caducar</a></li>
         <br />
-		<li class="normal"><a href="contenido/logout.php" onmouseover="mouseoversound.playclip()" onclick="clicksound.playclip()">Cerrar Sesión</a></li>
+		<li class="normal"><a href="contenido/logout.php" " >Cerrar Sesión</a></li>
         </ul>
 <?php break; ?>
 
@@ -55,7 +55,7 @@ switch($sele){ ?>
         	Gracias por Iniciar session, se han habilitado los recursos segun tus privilegios de usuario.
         </p>
         <ul>
-        	<li class="normal"><a href="contenido/logout.php" onmouseover="mouseoversound.playclip()" onclick="clicksound.playclip()">Cerrar Sesión</a></li>
+        	<li class="normal"><a href="contenido/logout.php" " >Cerrar Sesión</a></li>
         </ul>
 <?php break; ?>
 
@@ -70,10 +70,10 @@ switch($sele){ ?>
 <?php case "Polizas": ?>
 		<h2 align="center"><?php echo $sele ?></h2>
         <ul>
-		<li class="normal"><a href="contenido/verpolizas.php" target="contenido" onmouseover="mouseoversound.playclip()" onclick="clicksound.playclip()">Ver Polizas Ingresadas</a></li>
+		<li class="normal"><a href="contenido/verpolizas.php" target="contenido" " >Ver Polizas Ingresadas</a></li>
         
         <br />
-		<li class="normal"><a href="contenido/logout.php" onmouseover="mouseoversound.playclip()" onclick="clicksound.playclip()">Cerrar Sesión</a></li>
+		<li class="normal"><a href="contenido/logout.php" " >Cerrar Sesión</a></li>
         </ul>
 <?php break; ?>
 
@@ -82,7 +82,7 @@ switch($sele){ ?>
         	Gracias por Iniciar session, se han habilitado los recursos segun tus privilegios de usuario.
         </p>
         <ul>
-        	<li class="normal"><a href="contenido/logout.php" onmouseover="mouseoversound.playclip()" onclick="clicksound.playclip()">Cerrar Sesión</a></li>
+        	<li class="normal"><a href="contenido/logout.php" " >Cerrar Sesión</a></li>
         </ul>
 <?php break; ?>
 
@@ -94,7 +94,7 @@ else{
 	Por favor inicie sesión.
 </p>
 <ul>
-<li class="normal"><a href="contenido/login1.html" target="contenido" onmouseover="mouseoversound.playclip()" onclick="clicksound.playclip()">Iniciar Sesión</a></li>
+<li class="normal"><a href="contenido/login1.html" target="contenido" " >Iniciar Sesión</a></li>
 </ul>
 
 <?php }

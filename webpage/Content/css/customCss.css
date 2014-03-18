@@ -4,15 +4,23 @@ body > div {
 	text-align:center;
 }
 
-body > div header{
-border:1px solid #000000;
+
+body > div.container-fluid > div > div.col-md-9 > nav > div > div.col-lg-9 > ul > li > ul > li{
+	text-align:left;
 }
 
+header > img {
+width:100%;	
+}
 /*session board*/
 
-body > div.container-fluid > div > div.col-md-9 > nav > div > div.col-lg-9 > ul > li > a{
+body > div.container-fluid > div > div.col-md-9 > nav > div > div.col-lg-9 > ul > li >  a{
 	height:51px;
 	cursor:pointer;
+}
+
+body > div.container-fluid > div > div.col-md-9 > nav > div > div.col-lg-9 > ul > li > ul > li >  a{
+	cursor:pointer;	
 }
 body > div.container-fluid > div > div.col-md-9 > nav > div > div.col-lg-3 {
 	border-bottom: 1px solid #DDDDDD;
@@ -33,4 +41,47 @@ body > div.container-fluid > div > div.col-md-9 > nav > div > div.col-lg-3 > p:n
 #general_container{
 padding:10px;
 padding-top:20px;
+}
+
+/*game area*/
+
+#tema{
+display:inline;
+width:73%;
+}
+
+#tema + input {
+	display:inline;
+	width:24%
+}
+
+#acordion{
+	min-height:auto !important;	
+}
+
+#config{
+	height:auto !important;	
+}
+
+#tablero{
+	height:auto !important;	
+}
+
+#tablero > div > table > tbody a{
+	cursor:pointer;	
+}
+
+#tablero > div > table > thead > tr > th > p > span{
+	font-size:9px;
+	color:#FF0000;
+	width:100%;
+	text-align:center;
+}
+
+#tablero_preguntas > div:nth-child(2) > ol > li > p > a{
+cursor:pointer;	
+}
+
+#winners > div > div:nth-child(1) > img {
+width:100%;	
 }
