@@ -392,7 +392,7 @@ function actualizarTablero(){
 	$("#tablero > div:first-child > table > thead > tr").html("<th>Equipo</th>");	
 	$("#tablero > div:first-child > table > tbody > tr").html("<th>Puntos</th>");
 $.each(teams,function(index,team){
-	$("#tablero > div:first-child > table > thead > tr").append("<th id='"+team.team+"'><p class='text-center'>"+team.team+"<br/><span></span></p></th>");	
+	$("#tablero > div:first-child > table > thead > tr").append("<th id='"+team.team+"'><div class='row-fluid'></div><div class='col-lg-12'><p class='text-center'>"+team.team+"</p><div></th>");	
 		$("#tablero > div:first-child > table > tbody > tr").append("<th id='"+team.team+"'><p class='text-center'>"+team.puntos+"</p></th>");	
 	});	
 };
@@ -421,17 +421,21 @@ var beginGame=function(){
 			}
 			if(j<=answers.length+1){
 			arrays.push(ramdon);
-			$("#tablero > div:first-child+ div > table > tbody > tr:last-child").append("<td class='success'><h5><a id='"+ramdon+"'>"+c+"</a></h5></td>")
+			$("#tablero > div:first-child+ div > table > tbody > tr:last-child").append("<td class='active'><button id='"+ramdon+"' class='btn btn-info btn-block'>"+c+"</button></td>")
 			c++;
 			}
 		}
 	}
 	setTurno(turno);
-	$("#tablero > div > table > tbody > tr > td > h5 > a").on("click",function(event,input){
-		$(this).addClass("hidden");
-		$(this).parent().parent().removeClass("success");
-		$(this).parent().parent().addClass("danger");
-		$(this).html("<p class='text-center'>Respondida</p>")
+	$("#tablero > div > table > tbody > tr > td > button").on("click",function(event,input){
+		$(this).attr("disabled","disabled");
+		$(this).removeClass("btn-info");
+		$(this).addClass("btn-default");
+		$(this).text("RESPONDIDA")
+		//$(this).addClass("hidden");
+		//$(this).parent().parent().removeClass("success");
+		//$(this).parent().parent().addClass("danger");
+		//$(this).html("<p class='text-center'>Respondida</p>")
 		CreatAnswer(answers[$(this).attr("id")]);
 	});	
 }
@@ -465,9 +469,8 @@ function responseMsgbox(html){
 function setTurno(turno){
 
 	
-	$("th[id='"+teams[turno].team+"'],td[id='"+teams[turno].team+"']").removeClass("success");
-	$("th[id='"+teams[turno].team+"'],td[id='"+teams[turno].team+"']").addClass("info");
-	$("#"+teams[turno].team+" > p > span").html("En turno");
+	$("th[id='"+teams[turno].team+"'],td[id='"+teams[turno].team+"']").removeClass("active");
+	$("th[id='"+teams[turno].team+"'],td[id='"+teams[turno].team+"']").addClass("active");
 }
 
 

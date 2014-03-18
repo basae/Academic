@@ -64,13 +64,13 @@ Control.initGame();
     <h3>Tablero de Juego</h3>
 	<div class="row-fluid" id="tablero">
     	<div class="row-fluid">
-        	<table class="table table-bordered">
+        	<table class="table table-bordered table-condensed">
             	<thead>
                 	<tr>
                     </tr>
                 </thead>
                 <tbody>
-                	<tr class="success">
+                	<tr>
                     </tr>
                 </tbody>
             </table>
