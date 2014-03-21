@@ -13,7 +13,7 @@ var WebControl=function(){
 var init=function(){
 	$.getJSON("http://jsonip.com?callback=?", function (data) {
 		var url
-		if(data.ip=="187.172.192.111")
+		if(data.ip=="187.172.229.119")
 			url="../configuration2.xml";
 		else
 			url="../configuration.xml"
@@ -89,6 +89,35 @@ function createPhpSession(user){
 
 function openViews(menu){
 switch(menu){
+	
+case "whoare":
+			$.ajax({
+				type:"POST",
+				url:"../Pages/whoare.php",
+				data:"",
+				success: function(response){
+				$("#general_container").html(response);
+				},
+				error: function(){
+					alert("ha ocurrido un error, intentalo de nuevo");	
+				}
+			});
+	break
+	
+case "aboutus":
+			$.ajax({
+				type:"POST",
+				url:"../Pages/aboutus.php",
+				data:"",
+				success: function(response){
+				$("#general_container").html(response);
+				},
+				error: function(){
+					alert("ha ocurrido un error, intentalo de nuevo");	
+				}
+			});
+	break;
+	
 case "menu5":
 			$.ajax({
 				type:"POST",
@@ -290,10 +319,11 @@ var initGame=function(){
 					if($("#respuesta").val()==resp_correct){
 						teams[turno].puntos=parseInt(teams[turno].puntos)+parseInt(temp_points);
 						msgbox("Excelente!!! <br/>se han sumado "+temp_points+" punto(s) al equipo '"+teams[turno].team+"'");
+						resp_correct="";
 					}
 					else
 					{
-						if(resp_correct!="SI" || resp_correct!="NO")
+						if((resp_correct.toUpperCase()!="SI") && (resp_correct.toUpperCase()!="NO"))
 							msgbox("La Respuesta correcta es:<br />'"+resp_correct+"' !!<br/>Suerte para la Proxima");
 					}
 					actualizarTablero();					
@@ -407,7 +437,7 @@ var beginGame=function(){
 	var ramdon
 	for(i=0;i<(Math.round(Math.sqrt(answers.length)));i++){
 		$("#tablero > div:first-child+ div > table > tbody").append("<tr></tr>");
-		for(j=0;j<(Math.round(Math.sqrt(answers.length))+1);j++){	
+		for(j=0;j<(Math.round(Math.sqrt(answers.length)))+1;j++){	
 			ramdon=Math.floor(Math.random() * (semilla))
 			if($.inArray(ramdon,arrays)!=-1){
 				for(k=0;k<semilla;k++)
@@ -419,10 +449,13 @@ var beginGame=function(){
 					
 				}
 			}
-			if(j<=answers.length+1){
+			if(c<=answers.length){
 			arrays.push(ramdon);
 			$("#tablero > div:first-child+ div > table > tbody > tr:last-child").append("<td class='active'><button id='"+ramdon+"' class='btn btn-info btn-block'>"+c+"</button></td>")
 			c++;
+			}
+			else{
+				$("#tablero > div:first-child+ div > table > tbody > tr:last-child").append("<td class='active'><button class='btn btn-default btn-block' disabled='disabled'>X</button></td>");
 			}
 		}
 	}
@@ -431,7 +464,7 @@ var beginGame=function(){
 		$(this).attr("disabled","disabled");
 		$(this).removeClass("btn-info");
 		$(this).addClass("btn-default");
-		$(this).text("RESPONDIDA")
+		$(this).text("X")
 		//$(this).addClass("hidden");
 		//$(this).parent().parent().removeClass("success");
 		//$(this).parent().parent().addClass("danger");

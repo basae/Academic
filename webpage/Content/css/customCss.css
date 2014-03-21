@@ -9,7 +9,11 @@ body > div.container-fluid > div > div.col-md-9 > nav > div > div.col-lg-9 > ul 
 	text-align:left;
 }
 
-header > img {
+header > div{
+width:30%;	
+}
+
+header > div > img {
 width:100%;	
 }
 /*session board*/
@@ -23,7 +27,7 @@ body > div.container-fluid > div > div.col-md-9 > nav > div > div.col-lg-9 > ul 
 	cursor:pointer;	
 }
 body > div.container-fluid > div > div.col-md-9 > nav > div > div.col-lg-3 {
-	border-bottom: 1px solid #DDDDDD;
+	border-bottom: 1px solid #f37763;
 	height:51px;
 }
 

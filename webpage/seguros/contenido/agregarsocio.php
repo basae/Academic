@@ -72,7 +72,7 @@ if((isset($_SESSION['user']))&&($_SESSION['user']=="master") ){
     <div><input type="radio" value="Moral" id="moral" name="tipo_person" />Persona Moral</div>
     <div id="div_legal">
     <label>Representante Legal</label>
-    <input type="text" name="repre_legal" id="repre_legal" value="<?php echo $repre_legal ?>" onblur="tranforma(this.id)" size="25" required/>
+    <input type="text" name="repre_legal" id="repre_legal" value="<?php echo $repre_legal ?>" onblur="tranforma(this.id)" size="25"/>
     </div>
     </div>
     <label>Nombre</label>

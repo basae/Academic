@@ -22,15 +22,17 @@
    	<div class="col-md-1"></div>
     <div class="col-md-9">
         <header>
-        	<img src="Content/images/1.2.png"/>
+        	<div >
+	        	<img src="Content/images/1.2.png"/>
+            </div>
         </header>
         
         <nav>
         	<div class="row">
             	<div class="col-lg-9">
                     <ul class="nav nav-tabs">
-                    <li><a id="menu1">¿Quienes somos?</a></li>
-                    <li><a id ="menu2">¿Que es Academic?</a></li>
+                    <li><a id="aboutus">¿Quienes somos?</a></li>
+                    <li><a id ="whoare">¿Que es Eductronic?</a></li>
                     <li><a id ="menu3">Contribuir</a></li>
                         <li class="dropdown" id="menu4">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">

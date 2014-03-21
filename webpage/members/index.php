@@ -23,7 +23,9 @@
    	<div class="col-md-1"></div>
     <div class="col-md-9">
         <header>
-        	<img src="../Content/images/1.2.png"/>
+        	<div>
+	        	<img src="../Content/images/1.2.png"/>
+            </div>
         </header>
         
         <nav>
