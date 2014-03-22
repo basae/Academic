@@ -104,6 +104,20 @@ case "whoare":
 			});
 	break
 	
+case "contactUs":
+	$.ajax({
+				type:"POST",
+				url:"../Pages/contactUs.php",
+				data:"",
+				success: function(response){
+				$("#general_container").html(response);
+				},
+				error: function(){
+					alert("ha ocurrido un error, intentalo de nuevo");	
+				}
+			});
+break;
+	
 case "aboutus":
 			$.ajax({
 				type:"POST",
@@ -506,7 +520,19 @@ function setTurno(turno){
 	$("th[id='"+teams[turno].team+"'],td[id='"+teams[turno].team+"']").addClass("active");
 }
 
+//new answer controllers
 
+var showAnswerinTable=function(){
+	getService(urlApi+"groups/"+$("#groupId").val()+"/answers/",token)
+	window.setTimeout(function(){
+		$("#general_container > div > div.col-lg-4 > table > tbody").html("");
+		var c=1;
+		$.each(temp,function(index,pregunta){
+			$("#general_container > div > div.col-lg-4 > table > tbody").append("<tr><td>"+c+"</td><td><p class='text-left'>"+pregunta.answer+"</p></td><td>"+pregunta.points+"</td></tr>");
+			c++;
+		});
+	},500);
+};
 
 //Initialize two sound clips with 1 fallback file each:
 
@@ -519,7 +545,8 @@ return {
 	getPHPService:getPHPService,
 	init:init,
 	CreatJsonFromForm:CreatJsonFromForm,
-	initGame:initGame
+	initGame:initGame,
+	showAnswerinTable:showAnswerinTable
 	};
 };
 
