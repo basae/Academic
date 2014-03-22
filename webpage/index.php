@@ -42,6 +42,7 @@
                             </ul>
                         </li>
                     <li><a id="menu5">Registrarme!!</a></li>
+                    <li><a id="contactUs">Soporte | Contacto</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">

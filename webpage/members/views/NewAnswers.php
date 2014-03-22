@@ -69,9 +69,13 @@ Control.getService(urlApi+"subscribers/"+subscriberId+"/groups/",token);
 		$("#msgbox").html(mensaje);
 		$("#msgbox").dialog("open");
 	}
+	
+	$("#groupId").on("change",function(){
+		Control.showAnswerinTable();
+	});
 </script>
 <div class="row-fluid">
-	<div class="col-lg-3"></div>
+	<div class="col-lg-2"></div>
     
     <div class="col-lg-6">
     	<div><p class="text-left">Selecciona un tema creado para agregarle las actividades,preguntas o intrucciones que desees</p></div>
@@ -159,7 +163,19 @@ Control.getService(urlApi+"subscribers/"+subscriberId+"/groups/",token);
                 
             </form>
     </div>
-    <div class="col-lg-3"></div>
+    <div class="col-lg-4">
+    	<table class="table table-bordered table-hover">
+        	<thead>
+            	<tr>
+                	<th>#</th>
+                    <th>Pregunta</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
 </div>
 <div id="msgbox" title="Eductronic"></div>
 <?php } ?>

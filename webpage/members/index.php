@@ -37,7 +37,7 @@
                             Temas<span class="caret"></span>
                             <ul class="dropdown-menu">
                                 <li><a id="NewTopic" >Crear Nuevo Tema</a></li>
-                                <li><a href="newTopic.php">Administración de mis temas</a></li>
+                                <li><a id="AdminTopic">Administración de mis temas</a></li>
                                 <li><a href="newTopic.php">Ver temas existentes</a></li>
                             </ul>
                     </li>
