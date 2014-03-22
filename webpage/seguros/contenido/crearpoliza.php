@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
 <head>
@@ -70,7 +71,7 @@ if(isset($_GET['deducible'])){$deducible=$_GET['deducible'];}else{$deducible="";
         <label>No. de Poliza</label>
         <input type="text" name="poliza" id="poliza" value="<?php echo $poliza ?>" required/>
         <label>Unidad</label>
-        <select name="unidad" id="unidad" onchange="accion(this.value)" required>
+        <select name="unidad" id="unidad" onChange="accion(this.value)" required>
                 <option value="">Selecciona una Unidad</option>
                 <?php
                     $consulta=mysql_query("select *from unidad");
@@ -98,13 +99,13 @@ if(isset($_GET['deducible'])){$deducible=$_GET['deducible'];}else{$deducible="";
                 <option value="PÚBLICO FEDERAL">PÚBLICO FEDERAL (CARGA)</option>
             </select>                     
 		<label>Descripción de la Unidad</label>
-      	<textarea name="descrip" cols="48" rows="5" readonly="readonly"><?php echo $des ?></textarea>
+      	<textarea name="descrip" cols="48" rows="5" readonly><?php echo $des ?></textarea>
         <label>Endoso</label>
-	    <input type="number" name="endoso" id="endoso" onblur="tranforma(this.id)" value="<?php echo $endoso ?>" required />
+	    <input type="number" name="endoso" id="endoso" onBlur="tranforma(this.id)" value="<?php echo $endoso ?>" required />
         <label>Compañia</label>
-        <input type="text" name="compania" id="compania" size="35" onblur="tranforma(this.id)" value="<?php echo $compania ?>" required />
+        <input type="text" name="compania" id="compania" size="35" onBlur="tranforma(this.id)" value="<?php echo $compania ?>" required />
         <label>Forma de Pago</label>     
-      <select name="pago" id="pago" onchange="calculo(f1.fecha_inicio.value)" required>
+      <select name="pago" id="pago" onChange="calculo(f1.fecha_inicio.value)" required>
             <option value=""></option>
             <option value="12-m" >ANUAL</option>
             <option value="6-m" >SEMESTRAL</option>
@@ -130,8 +131,8 @@ if(isset($_GET['deducible'])){$deducible=$_GET['deducible'];}else{$deducible="";
       <input name="imagen" type="file" />
       <input name="anterior" id="anterior" type="hidden" value="<?php echo $archivo ?>" />
 	<label>Observaciones</label>
-	<textarea name="observaciones" id="observaciones" cols="48" rows="5" onblur="tranforma(this.id)"><?php echo $observaciones ?></textarea>
-	<input name="guardar" type="submit" value="Guardar Poliza" onclick="borra()" class="boton" /><input name="limpiar" type="reset" value="Limpiar Campos" onclick="location.href='crearpoliza.php'" class="boton" />
+	<textarea name="observaciones" id="observaciones" cols="48" rows="5" onBlur="tranforma(this.id)"><?php echo $observaciones ?></textarea>
+	<input name="guardar" type="submit" value="Guardar Poliza" onClick="borra()" class="boton" /><input name="limpiar" type="reset" value="Limpiar Campos" onClick="location.href='crearpoliza.php'" class="boton" />
   </form>
   </div>
   <div class="span1"></div>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title></title>
 <script src="../jquery-ui/jquery 1.11.js"></script>
-<link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap/css/bootstrap.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../bootstrap/bootstrap/css/bootstrap.css"/>
 <link rel="stylesheet" type="text/css" href="general.css" />
 </head>
 
@@ -66,30 +66,30 @@ if((isset($_SESSION['user']))&&($_SESSION['user']=="master") ){
 <form action="guardasocio.php" method="post" name="alta_socio">
 <input type="hidden" name="ide" value="<?php echo $ide ?>" readonly/>
 	<label>RFC</label>
-    <input type="text" name="rfc" id="rfc" value="<?php echo $rfc ?>" size="25" onblur="tranforma(this.id)" required/>
+    <input type="text" name="rfc" id="rfc" value="<?php echo $rfc ?>" size="25" onBlur="tranforma(this.id)" required/>
 	<div>
     <div><input type="radio" value="Fisica" id="fisica" onSelect="alert('lol')" name="tipo_person" checked/>Persona Fisica</div>
     <div><input type="radio" value="Moral" id="moral" name="tipo_person" />Persona Moral</div>
     <div id="div_legal">
     <label>Representante Legal</label>
-    <input type="text" name="repre_legal" id="repre_legal" value="<?php echo $repre_legal ?>" onblur="tranforma(this.id)" size="25"/>
+    <input type="text" name="repre_legal" id="repre_legal" value="<?php echo $repre_legal ?>" onBlur="tranforma(this.id)" size="25"/>
     </div>
     </div>
     <label>Nombre</label>
-    <input type="text" name="nombre" id="nombre" value="<?php echo $nombre ?>" onblur="tranforma(this.id)" size="25" required/>
+    <input type="text" name="nombre" id="nombre" value="<?php echo $nombre ?>" onBlur="tranforma(this.id)" size="25" required/>
     <label>Apellido Paterno</label>
-      <input type="text" name="ap" id="ap" value="<?php echo $ap ?>" onblur="tranforma(this.id)" size="25" required/>
+      <input type="text" name="ap" id="ap" value="<?php echo $ap ?>" onBlur="tranforma(this.id)" size="25" required/>
     <label>Apellido Materno</label>
-      <input type="text" name="am" id="am" value="<?php echo $am ?>" onblur="tranforma(this.id)" size="25" required/>
+      <input type="text" name="am" id="am" value="<?php echo $am ?>" onBlur="tranforma(this.id)" size="25" required/>
     <label>Dirección</label>
-      <textarea name="direccion" id="direccion" cols="20" rows="5" onblur="tranforma(this.id)" required><?php echo $dir ?></textarea>
+      <textarea name="direccion" id="direccion" cols="20" rows="5" onBlur="tranforma(this.id)" required><?php echo $dir ?></textarea>
     <label>Teléfono</label>
 
     <input name="telefono" type="text" id="telefono" value="<?php echo $telefono ?>" maxlength="10" size="10" required/>
     <label>Email</label>
       <input type="email" name="email" id="email" value="<?php echo $email ?>" size="25"/>
     <br/><br />
-    <input class="boton" type="submit" name="button" id="button"value="Guardar" /><input name="limpiar" class="boton" type="reset" value="Limpiar" onclick="accion()">
+    <input class="boton" type="submit" name="button" id="button"value="Guardar" /><input name="limpiar" class="boton" type="reset" value="Limpiar" onClick="accion()">
 
 </form>
 </div>
@@ -117,7 +117,7 @@ $(function(){
 	
 	$("#moral").on("click",function(event){
 		$("#div_legal").attr("style","visibility:visible;");
-		$("#repre_legal").attr("required");
+		$("#repre_legal").attr("required","required");
 		$("#repre_legal").attr("value","");
 	});
 	<?php
