@@ -1,79 +1,7 @@
 <?php 
 session_start();
 if(isset($_SESSION['login_user'])){ ?>
-<script>
-var subscriberId="<?php echo $_SESSION['login_user']['id'] ?>"
-var token="<?php echo $_SESSION['login_user']['accessToken'] ?>"
-Control.getService(urlApi+"subscribers/"+subscriberId+"/groups/",token);	
-		$("#msgbox").dialog({
-			autoOpen:false,
-			modal:true,
-			resizable:false,
-			show:{
-				effect:"clip",
-				duration:500	
-			},
-			buttons:{
-				"Ok":function(){
-					$(this).dialog("close");
-				}
-			}
-		});
-		
-		window.setTimeout(function(){
-			$.each(temp,function(index,tema){
-				$("#groupId").append("<option value='"+tema.id+"' >"+tema.topic+"</option>");
-			});
-		},500);
 
-		$("#correctAnswer").on("focusin",function(){
-			$("#correctAnswer").html("<option value=''>Selecciona la Respuesta</option>");
-			$.each($("[id*='r-']"),function(index,resp){
-				if(resp.value!=""){
-				$("#correctAnswer").append("<option value='"+resp.value+"'>"+resp.value+"</option>");
-				}			
-			});
-		});
-		
-		$("#addAnswer").on("submit",function(event){
-			event.preventDefault();
-			var data=Control.CreatJsonFromForm("addAnswer");
-			$.ajax({
-				type:"POST",
-				data:data,
-				headers: {"Authorization":"Token "+token},
-				url:urlApi+"groups/"+$("#groupId").val()+"/answers/",
-				crossDomain:true,
-				success:function(response){
-					if(response > 0){
-					msgbox("la pregunta fue añadida");	
-					limpiar();
-					}
-					else
-					{
-						if(response==-2)				
-							msgbox("Pregunta Repetida");
-					}
-				},
-				error:function(err){
-					msgbox("error "+err.status+" "+err.description);
-				}
-			});
-		});
-	
-	function limpiar(){
-		$("#addAnswer input[type='text'],select,input[type='numeric']").val("");	
-	}
-	
-	function msgbox(mensaje){
-		$("#msgbox").html(mensaje);
-		$("#msgbox").dialog("open");
-	}
-	
-	$("#groupId").on("change",function(){
-		Control.showAnswerinTable();
-	});
-</script>
 <div class="row-fluid">
 	<div class="col-lg-2"></div>
     
@@ -178,5 +106,79 @@ Control.getService(urlApi+"subscribers/"+subscriberId+"/groups/",token);
     </div>
 </div>
 <div id="msgbox" title="Eductronic"></div>
+<script>
+var subscriberId="<?php echo $_SESSION['login_user']['id'] ?>"
+var token="<?php echo $_SESSION['login_user']['accessToken'] ?>"
+Control.getService(urlApi+"subscribers/"+subscriberId+"/groups/",token);	
+		$("#msgbox").dialog({
+			autoOpen:false,
+			modal:true,
+			resizable:false,
+			show:{
+				effect:"clip",
+				duration:500	
+			},
+			buttons:{
+				"Ok":function(){
+					$(this).dialog("close");
+				}
+			}
+		});
+		
+		window.setTimeout(function(){
+			$.each(temp,function(index,tema){
+				$("#groupId").append("<option value='"+tema.id+"' >"+tema.topic+"</option>");
+			});
+		},500);
+
+		$("#correctAnswer").on("focusin",function(){
+			$("#correctAnswer").html("<option value=''>Selecciona la Respuesta</option>");
+			$.each($("[id*='r-']"),function(index,resp){
+				if(resp.value!=""){
+				$("#correctAnswer").append("<option value='"+resp.value+"'>"+resp.value+"</option>");
+				}			
+			});
+		});
+		
+		$("#addAnswer").on("submit",function(event){
+			event.preventDefault();
+			var data=Control.CreatJsonFromForm("addAnswer");
+			$.ajax({
+				type:"POST",
+				data:data,
+				headers: {"Authorization":"Token "+token},
+				url:urlApi+"groups/"+$("#groupId").val()+"/answers/",
+				crossDomain:true,
+				success:function(response){
+					if(response > 0){
+					msgbox("la pregunta fue añadida");	
+					limpiar();
+					}
+					else
+					{
+						if(response==-2)				
+							msgbox("Pregunta Repetida");
+					}
+				},
+				error:function(err){
+					msgbox("error "+err.status+" "+err.description);
+				}
+			});
+		});
+	
+	function limpiar(){
+		$("#addAnswer input[type='text'],select,input[type='numeric']").val("");	
+	}
+	
+	function msgbox(mensaje){
+		$("#msgbox").html(mensaje);
+		$("#msgbox").dialog("open");
+	}
+	
+	$("#groupId").on("change",function(){
+		Control.showAnswerinTable();
+	});
+</script>
+
 <?php } ?>
 

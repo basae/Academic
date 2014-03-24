@@ -14,11 +14,11 @@ var tem_points=0;
 var resp_correct="";
 Control.initGame();
 </script>
-
+<link rel="stylesheet" href="../Content/css/Children.css"/>
 <div class="row-fluid" id="acordion">
 <h3>Configuración</h3>
 	<div class="row-fluid" id="config">
-		<div class="col-lg-6">
+		<div class="col-md-6">
         	<form role="form" class="form-horizontal">
             	<div class="form-group">
                     <label for="no_team" class="col-sm-4 control-label"># Equipos</label>
@@ -35,15 +35,25 @@ Control.initGame();
                     <div class="col-xs-8">
 					<select name="tema" id="tema" required class="form-control">
                     	<option value="">Selecciona un tema</option>
-                    </select>
+	                </select>
                     <input type="button" id="cargar" class="btn btn-success btn-xs" value="Cargar">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="style" class="col-sm-4 control-label">Estilo</label>
+                    <div class="col-xs-8">
+					<select name="style" id="style" required class="form-control">
+                    	<option value="">Selecciona un estilo</option>
+                        <option value="Niño">Niño</option>
+                        <option value="Predefinido">Predefinido</option>
+	                </select>
                     </div>
                 </div>
                 <button type="button" class="btn btn-primary" id="beginGame">Empezar Juego</button>
             </form>
         </div>
         
-        <div class="col-lg-6">
+        <div class="col-md-6">
         	<table class="table table-bordered">
             	<thead>
                 	<tr>
@@ -77,7 +87,6 @@ Control.initGame();
         </div>
         <div class="row-fluid">
         	<table class="table table-bordered">
-            	<caption>Preguntas</caption>
                 <tbody>
                 </tbody>
             </table>

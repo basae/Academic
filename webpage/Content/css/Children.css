@@ -1,0 +1,23 @@
+@charset "utf-8";
+/* CSS Document */
+
+.children{
+background-image:url("../numeros_oso/tablero.png");
+	background-size:cover;
+	min-height:600px;
+}
+
+.children >div > table{
+	background-color:#FFFFFF;	
+}
+
+
+.children >div + div > table,#tablero >div + div > table > tbody,#tablero >div + div > table > tbody > tr,#tablero >div + div > table > tbody > tr > td{
+	background-color:transparent !important;
+	border:none;
+}
+
+.children >div + div > table > tbody > tr > td > button{
+	background-color:transparent !important;
+	border:none;
+}

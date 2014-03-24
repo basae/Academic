@@ -1,4 +1,6 @@
-<?php 	session_start(); ?>
+<?php 	session_start(); 
+if(isset($_SESSION['login_user'])){
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,19 +20,35 @@
 
 <title>Eductronic</title>
 </head>
+<body>
 <div class="container-fluid">
 	<div class="row">
    	<div class="col-md-1"></div>
-    <div class="col-md-9">
-        <header>
-        	<div>
+    <div class="col-md-10">
+       <header>
+        	<div class="row" >
+            	<div class="col-md-6">
 	        	<img src="../Content/images/1.2.png"/>
+                </div>
+                <div class="col-md-2">
+                
+                </div>
+                <div class="col-md-4">
+                <p class="text-right">
+                	 <?php 
+				if(isset($_SESSION["login_user"]))
+				{ ?>
+                    <strong>Bienvenido</strong>,<?php echo $_SESSION["login_user"]["name"] ?><br />
+                    <a href="../Controls/close_session.php">Cerrar Sessión</a>&nbsp;&nbsp;&nbsp;<a id="user_edit">Editar perfil</a>
+                <?php } ?>
+                </p>
+                </div>
             </div>
         </header>
         
         <nav>
-        	<div class="row">
-            	<div class="col-lg-9">
+        	<div class="row-fluid">
+            	<div class="col-md-12">
                     <ul class="nav nav-tabs">
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="topics">
@@ -67,19 +85,6 @@
                             <li><a href="#">Donaciones</a></li>
                         </ul>
                     </li>
-                    <?php
-					if(!isset($_SESSION['login_user'])){ ?>
-                    <li><a id="menu5">Registrarme!!</a></li>
-                    <?php } ?>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                <?php 
-				if(isset($_SESSION["login_user"]))
-				{ ?>
-                    <p><strong>Bienvenido</strong>,<?php echo $_SESSION["login_user"]["name"] ?></p>
-                    <p><a href="../Controls/close_session.php">Cerrar Sessión</a>&nbsp;&nbsp;&nbsp;<a id="user_edit">Editar perfil</a></p>
-                <?php } ?>
                 </div>
             </div>
         </nav>
@@ -90,7 +95,7 @@
         <footer>
         </footer>
         </div>
-   	<div class="col-md-2"></div>
+   	<div class="col-md-1"></div>
     </div>
 </div>
 
@@ -110,6 +115,6 @@
         </div>
     </form>
 </div>
-<body>
 </body>
 </html>
+<?php } ?>

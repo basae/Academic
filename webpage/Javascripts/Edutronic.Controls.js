@@ -13,7 +13,7 @@ var WebControl=function(){
 var init=function(){
 	$.getJSON("http://jsonip.com?callback=?", function (data) {
 		var url
-		if(data.ip=="187.172.229.119")
+		if(data.ip=="187.172.225.253")
 			url="../configuration2.xml";
 		else
 			url="../configuration.xml"
@@ -465,13 +465,40 @@ var beginGame=function(){
 			}
 			if(c<=answers.length){
 			arrays.push(ramdon);
+			if($("#style").val()!="Predefinido"){
+				var imagenes="";
+				if(c<10){
+				$("#tablero > div:first-child+ div > table > tbody > tr:last-child").append("<td class='active'><button id='"+ramdon+"' class='btn btn-info btn-block'><img src='../content/numeros_colores/"+c+".gif' /></button></td>")	
+				}
+				else
+				{
+					for(ch=0;ch<c.toString().length;ch++)
+					{
+							imagenes+="<img src='../content/numeros_colores/"+c.toString().charAt(ch)+".gif' />";
+					}
+					$("#tablero > div:first-child+ div > table > tbody > tr:last-child").append("<td class='active'><button id='"+ramdon+"' class='btn btn-info btn-block'>"+imagenes+"</button></td>")	
+					
+				}
+			}
+			else
+			{
 			$("#tablero > div:first-child+ div > table > tbody > tr:last-child").append("<td class='active'><button id='"+ramdon+"' class='btn btn-info btn-block'>"+c+"</button></td>")
+			}
 			c++;
 			}
 			else{
 				$("#tablero > div:first-child+ div > table > tbody > tr:last-child").append("<td class='active'><button class='btn btn-default btn-block' disabled='disabled'>X</button></td>");
 			}
 		}
+	switch($("#style").val()){
+		case "Niño":
+			$("#tablero").removeAttr("class");
+			$("#tablero").addClass("children");
+		break;
+		Default:
+			$("#tablero").removeAttr("class");
+		break;
+	};
 	}
 	setTurno(turno);
 	$("#tablero > div > table > tbody > tr > td > button").on("click",function(event,input){

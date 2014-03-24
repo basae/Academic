@@ -3019,7 +3019,7 @@ input[type="button"].btn-block {
   margin: 2px 0 0;
   font-size: 14px;
   list-style: none;
-  background-color: #fff;
+  background-color: #17b8cd;
   background-clip: padding-box;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, .15);
@@ -3043,7 +3043,7 @@ input[type="button"].btn-block {
   clear: both;
   font-weight: normal;
   line-height: 1.42857143;
-  color: #333;
+  color: #ffffff;
   white-space: nowrap;
 }
 .dropdown-menu > li > a:hover,
@@ -3451,6 +3451,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  background-color: #F37763;
 }
 .nav > li {
   position: relative;
@@ -3464,7 +3465,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eee;
+  background-color: #17b8cd;
 }
 .nav > li.disabled > a {
   color: #999;
@@ -3479,7 +3480,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
-  background-color: #eee;
+  background-color: #17B8CD;
   border-color: #428bca;
 }
 .nav .nav-divider {
@@ -3492,7 +3493,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   max-width: none;
 }
 .nav-tabs {
-  border-bottom: 1px solid #f37763;
+  border-bottom: 1px solid #eee;
 }
 .nav-tabs > li {
   float: left;
@@ -3503,16 +3504,18 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   line-height: 1.42857143;
   border: 1px solid transparent;
   border-radius: 4px 4px 0 0;
+  color:#ffffff;
+  font-weight:500;
 }
 .nav-tabs > li > a:hover {
-  border-color: #eee #eee #f37763;
+  border-color: #eee #eee #FFFFFF;
 }
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
-  color: #555;
+  color: #ffffff;
   cursor: default;
-  background-color: #fff;
+  background-color: #17b8cd;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
 }
@@ -3990,7 +3993,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
   color: #555;
-  background-color: #e7e7e7;
+  background-color: #17b8cd;
 }
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -4005,7 +4008,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #555;
-    background-color: #e7e7e7;
+    background-color: #17b8cd;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,
