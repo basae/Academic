@@ -4,9 +4,35 @@ body > div {
 
 }
 
-#test1{
-border:1px solid black;	
+#click_registro{
+width:240px;
+height:65px;
+position:relative;
+z-index:2;
+margin-top:-25.5%;
+margin-left:13.4%;
 }
+
+#click_registro > a{
+display:block;
+width:100%;
+height:100%;	
+}
+
+#facebook_click{
+width:30px;
+height:30px;
+position:relative;
+margin-top:17.8%;
+margin-left:59.5%;	
+}
+
+#facebook_click > a{
+display:block;
+width:100%;
+height:100%;
+}
+
 body > div.container-fluid > div > div.col-md-10 > nav > div > div.col-md-9 > ul > li > ul > li{
 	text-align:left;
 }

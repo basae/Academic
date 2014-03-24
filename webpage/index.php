@@ -54,10 +54,8 @@
         </nav>
         <article id="general_container">
         	<img src="Content/images/inicio.jpg" usemap="#inicio" />
-            <map name="inicio" id="inicio">
-            	<area shape="rect" coords="140,293,307,341" href="javascript:Control.changeMenu('menu5')" alt="registrarse">
-              <area shape="circle" coords="633,539,23" href="https://www.facebook.com/Eductronic" target="_new" alt="Facebook">
-            </map>
+            <div id="click_registro"><a href="javascript:Control.changeMenu('menu5')"></a></div>
+            <div id="facebook_click"><a href="https://www.facebook.com/Eductronic"></a></div>
         </article>
         
         <footer>
