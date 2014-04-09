@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script src="jquery 1.11.js"></script>
+</head>
+
+<body>
+<form name="f1" id="f1" action="" method="post">
+	<input type="checkbox" value="Lunes" name="check1[]"/>
+    <input type="checkbox" value="Martes" name="check1[]" />
+    <input type="checkbox" value="Miercoles" name="check1[]" />
+    <input type="checkbox" value="Jueves" name="check1[]" />
+    <input type="checkbox" value="Viernes" name="check1[]" />
+    <input type="checkbox" value="Sabado" name="check1[]" />
+    <input type="checkbox" value="Domingo" name="check1[]" />
+    <input type="submit" value="enviar"/>
+</form>
+<script>
+	$("#f1").on("submit",function(event){
+		event.preventDefault();
+		var Data=$(this).serializeArray();
+		$.ajax({
+			url:"getsValues.php",
+			data:Data,
+			type:"POST",
+			success: function(response){
+				alert(response);	
+			},
+			error: function(err){
+				alert(err.status);	
+			}
+			
+		});
+	});
+</script>
+</body>
+</html>
