@@ -36,8 +36,8 @@ if(!mysql_fetch_array($consulta)){
 		if(is_uploaded_file($temporal)){
 			if(($ext["extension"]=="jpg")||($ext["extension"]=="png")||($ext["extension"]=="gif")){
 				copy($temporal,"polizas/".$alea."_".$nombre);
-			
-				mysql_query("insert into poliza values('$poliza',$unidad,'$cobertura','$pago',str_to_date('".$fecha_inicio."','%d/%m/%Y'),str_to_date('".$vigencia."','%d/%m/%Y'),$deducible,'".$alea."_".$nombre."','$endoso','$compania','$observaciones')",$con)or die(header("location:".$retorno."&error=".mysql_error()));
+				echo "<script>alert('"+$fecha_inicio+"');</script>";
+				mysql_query("insert into poliza values('$poliza',$unidad,'$cobertura','$pago','".$fecha_inicio."','".$vigencia."',$deducible,'".$alea."_".$nombre."','$endoso','$compania','$observaciones')",$con)or die(header("location:".$retorno."&error=".mysql_error()));
 				echo "<script>alert('La Poliza Se ha Almacenado con Exito');location.href='verpolizas.php';</script>";
 			}
 			else{
@@ -55,7 +55,8 @@ else{
 		if(is_uploaded_file($temporal)){
 			if($_POST['anterior']!=""){unlink("polizas/".$_POST['anterior']);}
 			if(($ext["extension"]=="jpg")||($ext["extension"]=="png")||($ext["extension"]=="gif")){
-				mysql_query("update poliza set unidad=$unidad,cobertura='$cobertura',forma_pago='$pago',fecha_inicio=str_to_date('".$fecha_inicio."','%d/%m/%Y'),fecha_vigencia=str_to_date('".$vigencia."','%d/%m/%Y'),deducible=$deducible,foto='".$alea."_".$nombre."',endoso='$endoso',compania='$compania',observaciones='$observaciones' where id_poliza='$poliza'",$con)or die(header("location:".$retorno."&error=".mysql_error()));
+				echo "<script>alert('"+$fecha_inicio+"');</script>";
+				mysql_query("update poliza set unidad=$unidad,cobertura='$cobertura',forma_pago='$pago',fecha_inicio='".$fecha_inicio."',fecha_vigencia='".$vigencia."',deducible=$deducible,foto='".$alea."_".$nombre."',endoso='$endoso',compania='$compania',observaciones='$observaciones' where id_poliza='$poliza'",$con)or die(header("location:".$retorno."&error=".mysql_error()));
 				move_uploaded_file($temporal,"polizas/".$alea."_".$nombre);
 				echo "<script>alert('La Poliza Se ha Actualizado con Exito');location.href='verpolizas.php';</script>";
 			}
@@ -64,7 +65,8 @@ else{
 			}
 		}
 		else{
-			mysql_query("update poliza set unidad=$unidad,cobertura='$cobertura',forma_pago='$pago',fecha_inicio=str_to_date('".$fecha_inicio."','%d/%m/%Y'),fecha_vigencia=str_to_date('".$vigencia."','%d/%m/%Y'),deducible=$deducible,foto='".$_POST['anterior']."',endoso='$endoso',compania='$compania',observaciones='$observaciones' where id_poliza='$poliza'",$con)or die(header("location:".$retorno."&error=".mysql_error()));
+			echo "<script>alert('"+$fecha_inicio+"');</script>";
+			mysql_query("update poliza set unidad=$unidad,cobertura='$cobertura',forma_pago='$pago',fecha_inicio='".$fecha_inicio."',fecha_vigencia='".$vigencia."',deducible=$deducible,foto='".$_POST['anterior']."',endoso='$endoso',compania='$compania',observaciones='$observaciones' where id_poliza='$poliza'",$con)or die(header("location:".$retorno."&error=".mysql_error()));
 			echo "<script>alert('La Poliza Se ha Actualizado con Exito');location.href='verpolizas.php';</script>";
 			}
 	}

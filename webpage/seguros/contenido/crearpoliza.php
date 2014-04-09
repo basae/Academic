@@ -120,6 +120,12 @@ if(isset($_GET['deducible'])){$deducible=$_GET['deducible'];}else{$deducible="";
         <option value="AMPLIA">AMPLIA</option>
         <option value="DAÑOS A TERCEROS">DAÑOS A TERCEROS</option>
         <option value="RESPONSABILIDAD CIVIL">RESPONSABILIDAD CIVIL</option>
+        <option value="PROFESIONAL">PROFESIONAL</option>
+        <option value="GMM">GMM</option>
+        <option value="VIDA">VIDA</option>
+        <option value="EQUIPO DE CONTRATISTA">EQUIPO DE CONTRATISTA</option>
+        <option value="EMPRESARIAL">EMPRESARIAL</option>
+        <option value="TRANSPORTE">TRANSPORTE</option>
       </select>
       <label>Fecha de Inicio</label>
       <input name="fecha_inicio" type="date" id="fecha_inicio" value="<?php echo $inicio ?>" required/>
@@ -142,9 +148,8 @@ if(isset($_GET['deducible'])){$deducible=$_GET['deducible'];}else{$deducible="";
 <script type="text/javascript">
 $(function(){
 	$("#f1").one("submit",function(event){
-		if(new Date($("#fecha_inicio").val()).getTime() < new Date($("#vige").val()).getTime()){
+		if(parseInt(Date.parse(	$("#fecha_inicio").val()	)) > parseInt(Date.parse(	$("#vige").val()	))){
 			alert("La fecha de termino no puede ser menor que la fecha de inicio");
-			event.preventDefault();
 			return false;
 		}
 		else
@@ -182,10 +187,6 @@ cargaCombos("<?php echo $cobertura; ?>","cobertura");
 cargaCombos("<?php echo $pago; ?>","pago");
 cargaCombos("<?php echo $servicio; ?>","servicio");
 
-if(document.getElementById("fecha_inicio").value!="dd/mm/aaaa"){
-	document.getElementById("fecha_inicio").readOnly=false;	
-}
-
 function cargaCombos(val,campo){
 var valor2=val;
 if(valor2!=""){
@@ -209,20 +210,6 @@ if(valor2!=""){
 		document.getElementById("vige").value=dia+"/"+mes+"/"+ano;
 		}
 }*/
-function desblo(val){
-	var valor=document.getElementById(val).value;
-	if(valor!=""){
-	document.getElementById("fecha_inicio").readOnly=false;
-	if(document.getElementById("fecha_inicio").value!="dd/mm/aaaa"){
-	calculo(document.getElementById("fecha_inicio").value);
-	}
-	}
-	else{
-		document.getElementById("fecha_inicio").readOnly=true;
-		document.getElementById("fecha_inicio").value="dd/mm/aaaa";
-		document.getElementById("vige").value="";
-	}
-}
 function tranforma(valor){
 		document.getElementById(valor).value=document.getElementById(valor).value.toUpperCase();
 	}

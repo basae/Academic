@@ -50,6 +50,9 @@ Busqueda:
     	<option value="1">x Unidad</option>
         <option value="2">x No de Poliza</option>
         <option value="3">x Propietario</option>
+        <option value="4">x Serie</option>
+        <option value="5">x Motor</option>
+        <option value="6">x RFC</option>
     </select>
     <input name="buscar1" type="button" value="Buscar" onclick="redir()" class="boton" />
     <br /><br />
@@ -173,6 +176,15 @@ function redir(){
 	break;
 	case "3":
 	sentencia="where socio.nombre like '"+document.getElementById("cadena").value+"%' or socio.ap like '"+document.getElementById("cadena").value+"%' or socio.am like '";
+	break;
+	case "4":
+		sentencia="where unidad.no_serie like '";
+	break;
+	case "5":
+		sentencia="where unidad.no_motor like '";
+	break;
+	case "6":
+		sentencia="where socio.rfc like '";
 	break;
 }
 	location.href="verpolizas.php?busqueda="+sentencia+document.getElementById("cadena").value+"%'&var="+document.getElementById("cadena").value+"&sele="+document.getElementById("variable").value;
