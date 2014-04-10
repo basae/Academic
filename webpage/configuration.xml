@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Configuration>
 	<apiUrl>
-		<url>https://187.172.225.253/api/</url>
+		<url>https://myedrserver.sytes.net/api/</url>
 <!--		<url>https://localhost/api/</url> -->
 	</apiUrl>
 </Configuration>

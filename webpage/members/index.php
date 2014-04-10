@@ -56,7 +56,7 @@ if(isset($_SESSION['login_user'])){
                             <ul class="dropdown-menu">
                                 <li><a id="NewTopic" >Crear Nuevo Tema</a></li>
                                 <li><a id="AdminTopic">Administración de mis temas</a></li>
-                                <li><a href="newTopic.php">Ver temas existentes</a></li>
+                                <li><a id="AllTopic">Ver temas existentes</a></li>
                             </ul>
                     </li>
                     <li class="dropdown">
