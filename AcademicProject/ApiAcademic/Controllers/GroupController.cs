@@ -79,6 +79,8 @@ namespace ApiAcademic.Controllers
 
             if (group.topic == null || group.topic == string.Empty) result = false;
 
+            if (group.dificultyGrade == null || group.dificultyGrade == string.Empty) result = false;
+
             return result;
         }
     }

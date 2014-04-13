@@ -12,3 +12,4 @@ C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\AcademicProject\bin\Deb
 C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\AcademicProject\bin\Debug\AcademicProject.pdb
 C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\AcademicProject\obj\Debug\AcademicProject.dll
 C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\AcademicProject\obj\Debug\AcademicProject.pdb
+C:\Users\Edrei\Documents\GitHub\Academic\AcademicProject\AcademicProject\obj\Debug\VMAcademicProject.csprojResolveAssemblyReference.cache

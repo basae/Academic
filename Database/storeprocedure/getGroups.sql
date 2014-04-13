@@ -12,7 +12,9 @@ GO
 create procedure getGroups
 as
 begin
-select groupanswer.id,subscriber.id as subscriberid,(subscriber.firstname+' '+subscriber.lastname) as subscribername,groupanswer.topic,groupanswer.creationDate
-from groupanswer inner join subscriber on subscriber.id=groupanswer.subscriberId
+
+select distinct groupanswer.id,subscriber.id as subscriberid,(subscriber.firstname+' '+subscriber.lastname) as subscribername,groupanswer.topic,groupanswer.dificultyGrade,groupanswer.creationDate,
+(select count(answer.id) from answer where answer.groupId=groupanswer.id) as answernumber from groupanswer inner join subscriber on subscriber.id=groupanswer.subscriberId
+inner join answer on answer.groupId=groupanswer.id
 
 end

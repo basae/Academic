@@ -22,7 +22,7 @@ namespace ApiAcademic.Controllers
         }
 
         //get all groups by topic
-        public async Task<IEnumerable<GroupAnswers>> Get(string topic)
+        public async Task<IEnumerable<GroupAnswers>> Get(string topic,string dificultyGrade)
         {
             return await _groupanswerRepository.getGroupsByTopic(topic);
         }

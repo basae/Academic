@@ -17,8 +17,25 @@ if(isset($_SESSION['login_user'])){
                 <input type="text" name="topic" id="topic" placeholder="Nombre del tema" class="form-control" required/>
                 </div>
                 </div>
+                
+                <div class="form-group">
+                <label for="dificultyGrade" class="col-xs-4 control-label">Dificultad:</label>
+                <div class="col-xs-5">
+                <p class="text-left">
+                <select name="dificultyGrade" id="dificultyGrade" class="form-control" required>
+                	<option value="">Selecciona un Nivel</option>
+                    <option value="BASICO">Nivel Basico</option>
+                    <option value="MEDIO">Nivel Medio</option>
+                    <option value="SUPERIOR">Nivel Superior</option>
+                    
+                </select>
+                </p>
+                </div>
+                </div>
                 <div>
+	                <p class="text-center">
                 	<input type="submit" name="save" id="guardar" value="Guardar" class="btn">
+                    </p>
                 </div>
             </form>
         </div>

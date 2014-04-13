@@ -131,3 +131,7 @@ cursor:pointer;
 width:100%;	
 }
 
+#search-table > tbody > tr > td > a{
+cursor:pointer;	
+}
+

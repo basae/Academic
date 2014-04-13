@@ -42,6 +42,7 @@ namespace Data
                                      id = Convert.ToInt64(row["id"]),
                                      subscriberName = Convert.ToString(row["subscribername"]),
                                      topic = Convert.ToString(row["topic"]),
+                                     dificultyGrade = Convert.ToString(row["dificultyGrade"]),
                                      creationDate = Convert.ToDateTime(row["creationDate"])
                                  };
                     return result.FirstOrDefault();
@@ -71,6 +72,7 @@ namespace Data
                                
                                subscriberName = Convert.ToString(row["subscribername"]),
                                topic = Convert.ToString(row["topic"]),
+                               dificultyGrade = Convert.ToString(row["dificultyGrade"]),
                                creationDate = Convert.ToDateTime(row["creationDate"])
                            };
                 }
@@ -100,6 +102,7 @@ namespace Data
                                
                                subscriberName = Convert.ToString(row["subscribername"]),
                                topic = Convert.ToString(row["topic"]),
+                               dificultyGrade = Convert.ToString(row["dificultyGrade"]),
                                creationDate = Convert.ToDateTime(row["creationDate"])
                            };
                 }
@@ -127,7 +130,11 @@ namespace Data
                                id = Convert.ToInt64(row["id"]),
                                subscriberName = Convert.ToString(row["subscribername"]),
                                topic = Convert.ToString(row["topic"]),
-                               creationDate = Convert.ToDateTime(row["creationDate"])
+                               dificultyGrade = Convert.ToString(row["dificultyGrade"]),
+                               creationDate = Convert.ToDateTime(row["creationDate"]),
+                               answerNumber = Convert.ToUInt16(row["answernumber"]),
+                               myAnswer = new AnswerRepository().getAnswerByGroupSync(Convert.ToInt64(row["id"]))
+                                          
                            };
                 }
             }
@@ -147,6 +154,7 @@ namespace Data
                     cmd.Parameters.AddWithValue("id", group.id).Direction=ParameterDirection.InputOutput;
                     cmd.Parameters.AddWithValue("subscriberid", subscriberid);
                     cmd.Parameters.AddWithValue("topic", group.topic);
+                    cmd.Parameters.AddWithValue("dificultyGrade", group.dificultyGrade);
                     await cmd.ExecuteNonQueryAsync();
                     return Convert.ToInt64((cmd.Parameters["id"].Value == DBNull.Value) ? 0 : cmd.Parameters["id"].Value);
                 }

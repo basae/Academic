@@ -49,14 +49,15 @@ Control.getService(urlApi+"subscribers/"+subscriberId+"/groups/",token);
 window.setTimeout(function(){
 	$("#general_container > div > div.col-lg-8 > table > tbody").html("");
 	$.each(temp,function(index,topic){
-		$("#general_container > div > div.col-lg-8 > table > tbody").append("<tr><td class='col-sm-8'><p class='text-left'>"+topic.topic+"</p></td><td class='col-sm-4'><p class='text-center'><button class='btn btn-success btn-sm' ='edit' id='"+topic.id+"'>Editar</button>&nbsp;<button class='btn btn-danger btn-sm' id='delete-"+topic.id+"'>Eliminar</button></p></td></tr>");		
+		$("#general_container > div > div.col-lg-8 > table > tbody").append("<tr><td class='col-sm-4'><p class='text-left'>"+topic.topic+"</p></td><td class='col-sm-4'><p class='text-left'>"+topic.dificultyGrade+"</p></td><td class='col-sm-4'><p class='text-center'><button class='btn btn-success btn-sm' ='edit' id='"+topic.id+"'>Editar</button>&nbsp;<button class='btn btn-danger btn-sm' id='delete-"+topic.id+"'>Eliminar</button></p></td></tr>");		
 	});
 },300);
 window.setTimeout(function(){
 $("#general_container > div > div.col-lg-8 > table > tbody > tr > td.col-sm-4 > p > button:first-child").on("click",function(){
 	$("#div-form-edit-topic").dialog("open");
 	$("#id").val($(this).attr("id"));
-	$("#topic").val($(this).parent().parent().parent().children("td:eq(0)").text());		
+	$("#topic").val($(this).parent().parent().parent().children("td:eq(0)").text());
+	$("#dificultyGrade").val($(this).parent().parent().parent().children("td:eq(1)").text());		
 	});
 },400);
 };
