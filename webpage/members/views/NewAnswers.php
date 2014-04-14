@@ -119,7 +119,7 @@ Control.getService(urlApi+"subscribers/"+subscriberId+"/groups/",token);
 				duration:500	
 			},
 			buttons:{
-				"ENTER":function(){
+				"OK":function(){
 					$(this).dialog("close");
 				}
 			}
