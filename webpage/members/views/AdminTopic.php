@@ -7,7 +7,8 @@ if(isset($_SESSION['login_user'])){ ?>
     	<table class="table table-bordered table-hover table-condensed">
         	<thead>
             	<tr>
-                	<th>Nombre</th><th>
+                	<th>Nombre</th>
+                    <th>Nivel</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +26,15 @@ if(isset($_SESSION['login_user'])){ ?>
         	<label for="topic">Nombre</label>
             <input type="text" name="topic" id="topic" placeholder="Nombre del tema" required class="form-control" />
         </div>
+        <div class="form-group">
+                <label for="dificultyGrade">Dificultad</label>
+                <select name="dificultyGrade" id="dificultyGrade" class="form-control" required>
+                	<option value="">Selecciona un Nivel</option>
+                    <option value="BASICO">Nivel Basico</option>
+                    <option value="MEDIO">Nivel Medio</option>
+                    <option value="SUPERIOR">Nivel Superior</option>                    
+                </select>
+         </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
 
     </form>

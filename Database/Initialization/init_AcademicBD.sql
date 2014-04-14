@@ -31,11 +31,11 @@ go
 create table groupanswer(
 id int identity not null primary key,
 subscriberId int,
-topic varchar(100),
+topic varchar(300),
+dificultyGrade varchar(300)
 creationDate datetime,
 foreign key (subscriberId) references subscriber
 )
-
 go
 
 create table answer(

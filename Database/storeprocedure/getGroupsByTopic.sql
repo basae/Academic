@@ -15,6 +15,6 @@ create procedure getGroupsByTopic
 )
 as
 begin 
-select groupanswer.id,subscriber.id as subscriberid,(subscriber.firstname+' '+subscriber.lastname) as subscribername,groupanswer.topic,groupanswer.creationDate
+select groupanswer.id,subscriber.id as subscriberid,(subscriber.firstname+' '+subscriber.lastname) as subscribername,groupanswer.topic,groupanswer.dificultyGrade,groupanswer.creationDate
 from groupanswer inner join subscriber on subscriber.id=groupanswer.subscriberId where groupanswer.topic like @topic+'%'
 end

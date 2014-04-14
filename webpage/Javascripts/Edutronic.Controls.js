@@ -256,7 +256,7 @@ var initGame=function(){
 				duration:500	
 			},
 			buttons:{
-				"Ok":function(){
+				OK:function(){
 					$(this).dialog("close");
 				}
 			},
@@ -267,7 +267,8 @@ var initGame=function(){
 						var temporal=-1;
 						var ganadores=[];
 						for(i=0;i<teams.length;i++){
-							if((teams[i].puntos>temporal) && (teams[i].puntos!=0)){
+						    if ((teams[i].puntos > temporal) && (teams[i].puntos != 0))
+						    {
 							    ganadores=[];
 								ganadores.push(i);
 								temporal=teams[i].puntos;
@@ -277,6 +278,7 @@ var initGame=function(){
 									ganadores.push(i);
 								
 						}
+
 						if(ganadores.length>1){
 							var equipos;
 							$.each(ganadores,function(index,team){
@@ -304,7 +306,7 @@ var initGame=function(){
 				duration:1500	
 			},
 			buttons:{
-				"Ok":function(){
+				OK:function(){
 					$(this).dialog("close");	
 									
 				}
@@ -326,7 +328,7 @@ var initGame=function(){
 				duration:500	
 			},
 			buttons:{
-				"Ok":function(){
+				OK:function(){
 					
 					if(turno>=teams.length)
 						turno=0;					

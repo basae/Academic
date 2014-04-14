@@ -13,21 +13,23 @@ create procedure saveGroup
 (
 @id int output,
 @subscriberid int,
-@topic varchar(300)
+@topic varchar(300),
+@dificultyGrade varchar(300)
 )
 as
 begin
 if(@id>0)
 begin
 	update groupanswer set
-	topic=@topic where id=@id;
+	topic=@topic,
+	dificultyGrade=@dificultyGrade where id=@id;
 	set @id=0;
 end
 
 else
 
 begin
-	insert into groupanswer (subscriberid,topic,creationDate) values(@subscriberid,@topic,GETDATE());
+	insert into groupanswer (subscriberid,topic,dificultyGrade,creationDate) values(@subscriberid,@topic,@dificultyGrade,GETDATE());
 	set @id=SCOPE_IDENTITY();
 end
 

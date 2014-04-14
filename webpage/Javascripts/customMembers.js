@@ -4,6 +4,7 @@ $(function(){
 	//inicializo los controles scripts
 	Control=WebControl();
 	Control.init();
+	$( document ).tooltip();
 	//inicializa el form de login
 	$("#form-login").dialog({
 		autoOpen:false,
