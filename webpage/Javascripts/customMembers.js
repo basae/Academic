@@ -17,7 +17,7 @@ $(function(){
 		height:'auto',
 		modal:true,
 		buttons:{
-			"Ok":function(){
+			"OK":function(){
 				Control.login($("#txt-username").val(),$("#txt-password").val());
 			},
 			Cancel:function(){

@@ -256,7 +256,7 @@ var initGame=function(){
 				duration:500	
 			},
 			buttons:{
-				OK:function(){
+				Enter:function(){
 					$(this).dialog("close");
 				}
 			},
@@ -306,7 +306,7 @@ var initGame=function(){
 				duration:1500	
 			},
 			buttons:{
-				OK:function(){
+				Enter:function(){
 					$(this).dialog("close");	
 									
 				}
@@ -328,7 +328,7 @@ var initGame=function(){
 				duration:500	
 			},
 			buttons:{
-				OK:function(){
+				Enter:function(){
 					
 					if(turno>=teams.length)
 						turno=0;					

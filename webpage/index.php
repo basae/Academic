@@ -59,13 +59,14 @@
         </article>
         
         <footer>
+				<audio src="Content\intro.mp3"autoplay="true" loop="true"></audio>
         </footer>
         </div>
    	<div class="col-md-1"></div>
     </div>
 </div>
 
-<div id="form-login" title="Inicio de Sessión">
+<div id="form-login" title="Inicio de Sesión">
 	<form id="login" rol="form" class="form-horizontal">
 		<div class="form-group">
         	<label for="txt-username" class="col-sm-4 control-label">Usuario</label>
@@ -79,7 +80,7 @@
             <input type="password" id="txt-password" placeholder="contraseña" required class="form-control" />
             </div>
         </div>
-        <button type="submit" id="enviar" class="btn btn-primary">OK</button>
+        <button type="submit" id="enviar" class="btn btn-primary">Enter</button>
         <button type="reset" id="limpiar" class="btn btn-default">Cancelar</button>
     </form>
 </div>

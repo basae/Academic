@@ -6,7 +6,7 @@ if(isset($_SESSION['login_user'])){ ?>
 	<div class="col-lg-2"></div>
     
     <div class="col-lg-6">
-    	<div><p class="text-left">Selecciona un tema creado para agregarle las actividades,preguntas o intrucciones que desees</p></div>
+    	<div><p class="text-left">Selecciona un tema creado para agregarle las actividades, preguntas o intrucciones que desees.</p></div>
         	<form id="addAnswer" method="post" role="form" >
             <fieldset>
                 <input type="hidden" id="id" name="id" value="-1"/>
@@ -20,44 +20,44 @@ if(isset($_SESSION['login_user'])){ ?>
 
                 <div class="form-group">
                 <label for="answer" class="text-justify">Pregunta</label>
-                <input type="text" name="answer" id="answer" placeholder="pregunta o instruccion" class="form-control" required/>
+                <input type="text" name="answer" id="answer" placeholder="Pregunta o Instrucción" class="form-control" required/>
                 </div>
                 
                 <div>
-                <p class="text-left">Puedes poner solo una respuesta correcta en caso de preguntas abiertas o poner opciones multiples
-                y tambien si es un repo poner si y no para verficar que se cumpla</p>
+                <p class="text-left">Puedes poner solo una respuesta correcta en caso de preguntas abiertas o poner opciones múltiples
+                y también si es un reto poner si y no para verficar que se cumpla.</p>
                 </div>
                 
                 <div class="form-group">
-                <label for="r1" class="col-sm-4 control-label">respuesta:</label>
+                <label for="r1" class="col-sm-4 control-label">Respuesta:</label>
                 <div class="col-xs-8">
-                <input type="text" name="r1" id="r-1" placeholder="primera respuesta" class="form-control" required/>
-                </div>
-                </div>
-                
-                <div class="form-group">
-                <label for="r2" class="col-sm-4 control-label">respuesta:</label>
-                <div class="col-xs-8">
-                <input type="text" name="r2" id="r-2" placeholder="segunda respuesta" class="form-control" />
+                <input type="text" name="r1" id="r-1" placeholder="Primera respuesta" class="form-control" required/>
                 </div>
                 </div>
                 
                 <div class="form-group">
-                <label for="r3" class="col-sm-4 control-label">respuesta:</label>
+                <label for="r2" class="col-sm-4 control-label">Respuesta:</label>
                 <div class="col-xs-8">
-                <input type="text" name="r3" id="r-3" placeholder="tercera respuesta" class="form-control" />
+                <input type="text" name="r2" id="r-2" placeholder="Segunda respuesta" class="form-control" />
                 </div>
                 </div>
                 
                 <div class="form-group">
-                <label for="r4" class="col-sm-4 control-label">respuesta:</label>
+                <label for="r3" class="col-sm-4 control-label">Respuesta:</label>
                 <div class="col-xs-8">
-                <input type="text" name="r4" id="r-4" placeholder="cuarta respuesta" class="form-control" />
+                <input type="text" name="r3" id="r-3" placeholder="Tercera respuesta" class="form-control" />
+                </div>
+                </div>
+                
+                <div class="form-group">
+                <label for="r4" class="col-sm-4 control-label">Respuesta:</label>
+                <div class="col-xs-8">
+                <input type="text" name="r4" id="r-4" placeholder="Cuarta respuesta" class="form-control" />
                 </div>
                 </div>
                 <div>
                 
-                <p class="text-left"> respuesta correcta es la cual validara si dar los puntos o no al equipo</p>
+                <p class="text-left">Respuesta correcta es la cual validará si dar los puntos ó no al equipo.</p>
                 </div>
                 <div class="form-group">
                 <label for="correctAnswer">Respuesta Correcta</label>
@@ -80,7 +80,7 @@ if(isset($_SESSION['login_user'])){ ?>
                 <div class="form-group">
                 <label for="points" class="col-sm-4 control-label">Valor:</label>
                 <div class="col-xs-8">
-                <input type="numeric" name="points" id="points" placeholder="puntos" class="form-control" />
+                <input type="numeric" name="points" id="points" placeholder="Puntos" class="form-control" />
                 </div>
                 </div>
                </fieldset>
@@ -119,7 +119,7 @@ Control.getService(urlApi+"subscribers/"+subscriberId+"/groups/",token);
 				duration:500	
 			},
 			buttons:{
-				"Ok":function(){
+				"ENTER":function(){
 					$(this).dialog("close");
 				}
 			}
@@ -151,7 +151,7 @@ Control.getService(urlApi+"subscribers/"+subscriberId+"/groups/",token);
 				crossDomain:true,
 				success:function(response){
 					if(response > 0){
-					msgbox("la pregunta fue añadida");	
+					msgbox("La pregunta fue añadida");	
 					limpiar();
 					}
 					else

@@ -39,7 +39,7 @@ if(isset($_SESSION['login_user'])){
 				if(isset($_SESSION["login_user"]))
 				{ ?>
                     <strong>Bienvenido</strong>,<?php echo $_SESSION["login_user"]["name"] ?><br />
-                    <a href="../Controls/close_session.php">Cerrar Sessión</a>&nbsp;&nbsp;&nbsp;<a id="user_edit">Editar perfil</a>
+                    <a href="../Controls/close_session.php">Cerrar Sesión</a>&nbsp;&nbsp;&nbsp;<a id="user_edit">Editar perfil</a>
                 <?php } ?>
                 </p>
                 </div>
@@ -54,7 +54,7 @@ if(isset($_SESSION['login_user'])){
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="topics">
                             Temas<span class="caret"></span>
                             <ul class="dropdown-menu">
-                                <li><a id="NewTopic" >Crear Nuevo Tema</a></li>
+                                <li><a id="NewTopic" >Crear nuevo tema</a></li>
                                 <li><a id="AdminTopic">Administración de mis temas</a></li>
                                 <li><a id="AllTopic">Ver temas existentes</a></li>
                             </ul>
@@ -63,7 +63,7 @@ if(isset($_SESSION['login_user'])){
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="answers">
                             Preguntas<span class="caret"></span>
                             <ul class="dropdown-menu">
-                                <li><a id="NewAnswers">Crear Preguntas</a></li>
+                                <li><a id="NewAnswers">Crear preguntas</a></li>
                                 <li><a href="newTopic.php">Administrar mis preguntas</a></li>
                                 <li><a href="newTopic.php">Añadir a mis grupos</a></li>
                             </ul>
@@ -99,18 +99,18 @@ if(isset($_SESSION['login_user'])){
     </div>
 </div>
 
-<div id="form-login" title="Inicio de Sessión">
+<div id="form-login" title="Inicio de Sesión">
 	<form id="login" rol="form" class="form-horizontal">
 		<div class="form-group">
         	<label for="txt-username" class="col-sm-4 control-label">Usuario</label>
             <div class="col-sm-7">
-            <input type="text" id="txt-username" placeholder="usuario.." required class="form-control" />
+            <input type="text" id="txt-username" placeholder="Usuario.." required class="form-control" />
             </div>
         </div>
         <div class="form-group">
             <label for="txt-password" class="col-sm-4 control-label">Contraseña</label>
             <div class="col-sm-7">
-            <input type="password" id="txt-password" placeholder="contraseña" required class="form-control" />
+            <input type="password" id="txt-password" placeholder="Contraseña.." required class="form-control" />
             </div>
         </div>
     </form>

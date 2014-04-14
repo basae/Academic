@@ -12,7 +12,7 @@ var token="<?php echo $_SESSION['login_user']['accessToken'] ?>"
         <div class="col-lg-4">
         
         	<form role="form" class="form-vertical" id="search">
-            	<label for="topic">Busqueda</label>
+            	<label for="topic">Búsqueda</label>
                 <div class="row">
                 	<div class="col-lg-9">
                     <p>
@@ -26,14 +26,14 @@ var token="<?php echo $_SESSION['login_user']['accessToken'] ?>"
 		            <div class="col-lg-9">
                     	<div class="row">
                         <p>
-    		            <input type="text" placeholder="introduce el tema" id="topic" name="topic" required class="form-control" disabled="disabled"/>
+    		            <input type="text" placeholder="Introduce el tema" id="topic" name="topic" required class="form-control" disabled="disabled"/>
                         </p>
                         </div>
                         <div class="row">
                         <p>
                         <select name="dificultyGrade" id="dificultyGrade" class="form-control" required disabled="disabled">
                             <option value="">Selecciona un Nivel</option>
-                            <option value="BASICO">Nivel Basico</option>
+                            <option value="BASICO">Nivel Básico</option>
                             <option value="MEDIO">Nivel Medio</option>
                             <option value="SUPERIOR">Nivel Superior</option>                    
                     	</select>
@@ -56,7 +56,7 @@ var token="<?php echo $_SESSION['login_user']['accessToken'] ?>"
             	<th>Tema</th>
                 <th>Nivel</th>
                 <th>No. Preguntas</th>
-                <th>Creado Por</th>
+                <th>Creado por</th>
             </thead>
             <tbody>
             </tbody>

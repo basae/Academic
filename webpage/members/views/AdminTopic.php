@@ -30,7 +30,7 @@ if(isset($_SESSION['login_user'])){ ?>
                 <label for="dificultyGrade">Dificultad</label>
                 <select name="dificultyGrade" id="dificultyGrade" class="form-control" required>
                 	<option value="">Selecciona un Nivel</option>
-                    <option value="BASICO">Nivel Basico</option>
+                    <option value="BASICO">Nivel Básico</option>
                     <option value="MEDIO">Nivel Medio</option>
                     <option value="SUPERIOR">Nivel Superior</option>                    
                 </select>

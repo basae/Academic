@@ -5,7 +5,7 @@ if(isset($_SESSION['login_user'])){
 	<div class="col-lg-2"></div>
     
     <div class="col-lg-8">
-    	<div><p class="text-justify">crea tu tema para poder añadirle los retos,preguntas o actividades que desees</p></div>
+    	<div><p class="text-justify">Crea tu tema para poder añadirle los retos, preguntas o actividades que desees.</p></div>
         <div>
         	<form id="newTopic" method="post" role="form" class="form-horizontal">
             <div class="form-group">
@@ -24,7 +24,7 @@ if(isset($_SESSION['login_user'])){
                 <p class="text-left">
                 <select name="dificultyGrade" id="dificultyGrade" class="form-control" required>
                 	<option value="">Selecciona un Nivel</option>
-                    <option value="BASICO">Nivel Basico</option>
+                    <option value="BASICO">Nivel Básico</option>
                     <option value="MEDIO">Nivel Medio</option>
                     <option value="SUPERIOR">Nivel Superior</option>
                     
